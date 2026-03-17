@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Products</h1>
+    <div class="tabs">
+        <button class="tablinks" onclick="openTab(event, 'Sneakers')">Sneakers</button>
+        <button class="tablinks" onclick="openTab(event, 'Iphones')">Iphones</button>
+    </div>
+
+    <div id="Sneakers" class="tabcontent">
+        <h3>Sneakers</h3>
+        <p>Here you can find a variety of sneakers.</p>
+        <!-- Add sneaker products here -->
+    </div>
+
+    <div id="Iphones" class="tabcontent">
+        <h3>Iphones</h3>
+        <p>Here you can find the latest iPhones.</p>
+        <!-- Add iPhone products here -->
+    </div>
+
+    <script>
+    function openTab(evt, tabName) {
+        // Hide all tab contents
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        // Remove "active" class from all tab links
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        // Show the current tab and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+</body>
+</html>
