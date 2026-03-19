@@ -573,3 +573,38 @@ footer::before {
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
+/* Enhanced slogan styling for "Step in Style • Talk in Tech" */
+.tagline {
+    font-size: 14px;
+    background: linear-gradient(135deg, #D4AF37, #FFD700, #FDB931);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+/* Add stylish dividers */
+.tagline::before,
+.tagline::after {
+    content: "✦";
+    color: #D4AF37;
+    font-size: 12px;
+    margin: 0 10px;
+    opacity: 0.8;
+}
+
+/* Make each part stand out */
+.tagline span.sneaker-part {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+.tagline span.tech-part {
+    color: #FFFFFF;
+    font-weight: 700;
+}
