@@ -3,17 +3,612 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iSneakers ZW - Premium Sneakers & iPhones in Zimbabwe</title>
+    <title>iSneakers ZW - All Products</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== PRODUCTS PAGE - MODERN COLORFUL DESIGN ===== */
+        
+        /* Import modern fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        /* Page Header - Vibrant Gradient */
+        .products-header {
+            background: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
+            background-size: 300% 300%;
+            animation: gradientFlow 8s ease infinite;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .products-header::before {
+            content: '🛍️';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            font-size: 200px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            animation: floatEmoji 6s ease-in-out infinite;
+        }
+        
+        .products-header::after {
+            content: '✨✨✨';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 100px;
+            opacity: 0.1;
+            animation: spin 10s linear infinite;
+        }
+        
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0) rotate(-15deg); }
+            50% { transform: translateY(-20px) rotate(-15deg); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .products-header h1 {
+            font-size: 72px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 3px 3px 0 rgba(0,0,0,0.2); }
+            50% { text-shadow: 6px 6px 20px rgba(255,255,255,0.5); }
+        }
+        
+        .products-header p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        /* Floating Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: -30px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #4158D0, #C850C0, #FFCC70) border-box;
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 20px 40px rgba(65,88,208,0.2); }
+            50% { box-shadow: 0 20px 60px rgba(200,80,192,0.4); }
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .search-box button {
+            padding: 0 35px;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .search-box button:hover {
+            background: linear-gradient(135deg, #C850C0, #4158D0);
+            transform: scale(1.05);
+        }
+        
+        /* Category Filter Pills - Modern Design */
+        .category-pills {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        .pill {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .pill:hover::before {
+            left: 100%;
+        }
+        
+        .pill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(65,88,208,0.3);
+        }
+        
+        .pill.active {
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            color: white;
+            box-shadow: 0 10px 25px rgba(200,80,192,0.4);
+        }
+        
+        /* Products Grid - Modern Masonry Style */
+        .products-showcase {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        /* Product Card - 3D Modern Design */
+        .product-item {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            animation: cardAppear 0.6s ease-out;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(50px) rotateX(10deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        }
+        
+        .product-item:nth-child(1) { animation-delay: 0.1s; }
+        .product-item:nth-child(2) { animation-delay: 0.2s; }
+        .product-item:nth-child(3) { animation-delay: 0.3s; }
+        .product-item:nth-child(4) { animation-delay: 0.4s; }
+        .product-item:nth-child(5) { animation-delay: 0.5s; }
+        .product-item:nth-child(6) { animation-delay: 0.6s; }
+        
+        .product-item:hover {
+            transform: translateY(-15px) scale(1.02) rotateX(5deg);
+            box-shadow: 0 40px 60px rgba(65,88,208,0.3);
+        }
+        
+        /* Product Image Container - Colorful Backgrounds */
+        .product-media {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-media::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+        
+        .product-item:nth-child(3n+1) .product-media { background: linear-gradient(135deg, #4158D0, #C850C0); }
+        .product-item:nth-child(3n+2) .product-media { background: linear-gradient(135deg, #FF512F, #DD2476); }
+        .product-item:nth-child(3n+3) .product-media { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+        }
+        
+        .product-item:hover .product-image {
+            transform: scale(1.15) rotate(3deg);
+        }
+        
+        /* Floating Badges */
+        .product-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .tag-new {
+            background: rgba(255,255,255,0.95);
+            color: #4158D0;
+        }
+        
+        .tag-sale {
+            background: linear-gradient(135deg, #FF512F, #DD2476);
+            color: white;
+        }
+        
+        .tag-popular {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+        }
+        
+        .tag-limited {
+            background: linear-gradient(135deg, #FDC830, #F37335);
+            color: white;
+        }
+        
+        /* Product Info Section */
+        .product-details {
+            padding: 25px;
+            background: white;
+            position: relative;
+        }
+        
+        .product-category-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cat-iphone { background: #4158D0; color: white; }
+        .cat-sneaker { background: #FF512F; color: white; }
+        .cat-watch { background: #11998e; color: white; }
+        .cat-accessory { background: #FDC830; color: black; }
+        .cat-powerbank { background: #C850C0; color: white; }
+        
+        .product-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.3;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Color Options */
+        .color-options {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .color-dot {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .color-dot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Feature Pills */
+        .feature-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .feature-pill {
+            background: #f5f5f5;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s;
+        }
+        
+        .product-item:hover .feature-pill {
+            background: linear-gradient(135deg, #4158D020, #C850C020);
+        }
+        
+        /* Action Buttons */
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .inquiry-btn-modern {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            color: white;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .inquiry-btn-modern:hover {
+            background: linear-gradient(135deg, #C850C0, #4158D0);
+            transform: translateX(5px);
+            box-shadow: 0 10px 20px rgba(200,80,192,0.3);
+        }
+        
+        .wishlist-btn {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wishlist-btn:hover {
+            border-color: #FF512F;
+            transform: scale(1.1);
+        }
+        
+        /* Category Sections */
+        .category-section {
+            margin: 60px 0;
+        }
+        
+        .section-header-modern {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        
+        .section-title-modern {
+            font-size: 36px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #4158D0, #C850C0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .section-title-modern::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #4158D0, #C850C0);
+            border-radius: 2px;
+        }
+        
+        .view-all-link {
+            color: #4158D0;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+        
+        .view-all-link:hover {
+            gap: 10px;
+            color: #C850C0;
+        }
+        
+        /* Trending Banner */
+        .trending-banner {
+            background: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
+            padding: 60px 40px;
+            border-radius: 40px;
+            margin: 60px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trending-banner::before {
+            content: '🔥🔥🔥';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+        
+        .trending-content {
+            max-width: 500px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .trending-content h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .trending-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .trending-btn {
+            padding: 15px 40px;
+            background: white;
+            color: #4158D0;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .trending-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .products-header h1 {
+                font-size: 42px;
+            }
+            
+            .products-header p {
+                font-size: 16px;
+            }
+            
+            .section-header-modern {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .trending-banner h2 {
+                font-size: 32px;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading-skeleton {
+            animation: skeleton 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes skeleton {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        
+        /* Empty State */
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            grid-column: 1 / -1;
+        }
+        
+        .no-results h3 {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,14 +616,18 @@
             <div class="logo">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
                     <h1>🇿🇼 iSneakers ZW</h1>
-                    <p class="tagline">Step in Style • Talk in Tech</p>
+                    <p class="tagline">
+                        <span class="step-part">Step in Style</span> 
+                        <span class="dot">•</span> 
+                        <span class="tech-part">Talk in Tech</span>
+                    </p>
                 </a>
             </div>
             
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
                     <li><a href="iphones.html">iPhones</a></li>
                     <li><a href="sneakers.html">Sneakers</a></li>
                     <li><a href="promotions.html">Promotions</a></li>
@@ -43,212 +642,758 @@
     </header>
 
     <main>
-        <!-- YOUR EXISTING PAGE CONTENT GOES HERE -->
-        <!-- Keep all your current product listings, etc. -->
+        <!-- MODERN HEADER -->
+        <div class="products-header">
+            <h1>ALL PRODUCTS</h1>
+            <p>🇿🇼 Discover the finest sneakers and tech in Zimbabwe</p>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search products... (e.g., iPhone, Nike, Jordan, Watch)" onkeyup="searchProducts()">
+                <button onclick="searchProducts()">🔍 Search</button>
+            </div>
+        </div>
+
+        <!-- CATEGORY PILLS -->
+        <div class="category-pills">
+            <button class="pill active" onclick="filterCategory('all')">All Products</button>
+            <button class="pill" onclick="filterCategory('iphone')">📱 iPhones</button>
+            <button class="pill" onclick="filterCategory('sneaker')">👟 Sneakers</button>
+            <button class="pill" onclick="filterCategory('watch')">⌚ Apple Watch</button>
+            <button class="pill" onclick="filterCategory('powerbank')">🔋 Power Banks</button>
+            <button class="pill" onclick="filterCategory('charger')">⚡ Chargers</button>
+            <button class="pill" onclick="filterCategory('accessory')">🎧 Accessories</button>
+        </div>
+
+        <div class="products-showcase">
+            <!-- IPHONES SECTION -->
+            <div class="category-section" id="iphones-section">
+                <div class="section-header-modern">
+                    <h2 class="section-title-modern">📱 Latest iPhones</h2>
+                    <a href="iphones.html" class="view-all-link">View All →</a>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- iPhone 15 Pro Max -->
+                    <div class="product-item" data-category="iphone" data-name="iPhone 15 Pro Max">
+                        <div class="product-media">
+                            <img src="images/iphone-15-pro-max.jpg" alt="iPhone 15 Pro Max" class="product-image" onerror="this.src='https://placehold.co/600x400/4158D0/white?text=iPhone+15+Pro+Max'">
+                            <div class="product-tag tag-new">NEW</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-iphone">iPhone</span>
+                            <h3 class="product-title">iPhone 15 Pro Max</h3>
+                            <p class="product-description">6.7" Display • A17 Pro • Titanium • 5G</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                                <span class="color-dot" style="background: #2E6DB4;"></span>
+                                <span class="color-dot" style="background: #C0C0C0;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Dynamic Island</span>
+                                <span class="feature-pill">USB-C</span>
+                                <span class="feature-pill">5x Zoom</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('iPhone 15 Pro Max')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 15 Pro -->
+                    <div class="product-item" data-category="iphone" data-name="iPhone 15 Pro">
+                        <div class="product-media">
+                            <img src="images/iphone-15-pro.jpg" alt="iPhone 15 Pro" class="product-image" onerror="this.src='https://placehold.co/600x400/C850C0/white?text=iPhone+15+Pro'">
+                            <div class="product-tag tag-new">NEW</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-iphone">iPhone</span>
+                            <h3 class="product-title">iPhone 15 Pro</h3>
+                            <p class="product-description">6.1" Display • A17 Pro • Titanium • 5G</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                                <span class="color-dot" style="background: #2E6DB4;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Action Button</span>
+                                <span class="feature-pill">USB-C</span>
+                                <span class="feature-pill">Always-On</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('iPhone 15 Pro')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 15 -->
+                    <div class="product-item" data-category="iphone" data-name="iPhone 15">
+                        <div class="product-media">
+                            <img src="images/iphone-15.jpg" alt="iPhone 15" class="product-image" onerror="this.src='https://placehold.co/600x400/FF512F/white?text=iPhone+15'">
+                            <div class="product-tag tag-popular">POPULAR</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-iphone">iPhone</span>
+                            <h3 class="product-title">iPhone 15</h3>
+                            <p class="product-description">6.1" Display • A16 Chip • 5G • USB-C</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #FFB6C1;"></span>
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #87CEEB;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Dynamic Island</span>
+                                <span class="feature-pill">48MP Camera</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('iPhone 15')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SNEAKERS SECTION -->
+            <div class="category-section" id="sneakers-section">
+                <div class="section-header-modern">
+                    <h2 class="section-title-modern">👟 Premium Sneakers</h2>
+                    <a href="sneakers.html" class="view-all-link">View All →</a>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- SB Dunk Travis Scott -->
+                    <div class="product-item" data-category="sneaker" data-name="SB Dunk Travis Scott">
+                        <div class="product-media">
+                            <img src="images/sb-dunk-travis.jpg" alt="SB Dunk Travis Scott" class="product-image" onerror="this.src='https://placehold.co/600x400/FF512F/white?text=SB+Dunk+Travis'">
+                            <div class="product-tag tag-limited">LIMITED</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-sneaker">SB Dunk</span>
+                            <h3 class="product-title">SB Dunk Low Travis Scott</h3>
+                            <p class="product-description">Cactus Jack • Paisley • Skate</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #8B4513;"></span>
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #F5DEB3;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Limited Edition</span>
+                                <span class="feature-pill">Collab</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('SB Dunk Travis Scott')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jordan 4 Retro Bred -->
+                    <div class="product-item" data-category="sneaker" data-name="Jordan 4 Bred">
+                        <div class="product-media">
+                            <img src="images/j4-bred.jpg" alt="Jordan 4 Bred" class="product-image" onerror="this.src='https://placehold.co/600x400/C850C0/white?text=Jordan+4+Bred'">
+                            <div class="product-tag tag-popular">ICONIC</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-sneaker">Jordan 4</span>
+                            <h3 class="product-title">Jordan 4 Retro Bred</h3>
+                            <p class="product-description">Black • Red • White • 1989 OG</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #FF0000;"></span>
+                                <span class="color-dot" style="background: #fff;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">OG Colorway</span>
+                                <span class="feature-pill">Nike Air</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('Jordan 4 Bred')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TN Hyper Blue -->
+                    <div class="product-item" data-category="sneaker" data-name="TN Hyper Blue">
+                        <div class="product-media">
+                            <img src="images/tn-hyperblue.jpg" alt="TN Hyper Blue" class="product-image" onerror="this.src='https://placehold.co/600x400/11998e/white?text=TN+Hyper+Blue'">
+                            <div class="product-tag tag-popular">TRENDING</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-sneaker">TN</span>
+                            <h3 class="product-title">Air Max Plus Hyper Blue</h3>
+                            <p class="product-description">Gradient • Tuned Air • 1998</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #2E6DB4;"></span>
+                                <span class="color-dot" style="background: #FF8C00;"></span>
+                                <span class="color-dot" style="background: #fff;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">OG Gradient</span>
+                                <span class="feature-pill">Tuned Air</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('TN Hyper Blue')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPLE WATCH SECTION -->
+            <div class="category-section">
+                <div class="section-header-modern">
+                    <h2 class="section-title-modern">⌚ Apple Watch</h2>
+                    <a href="iphones.html" class="view-all-link">View All →</a>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Apple Watch Ultra 2 -->
+                    <div class="product-item" data-category="watch" data-name="Apple Watch Ultra 2">
+                        <div class="product-media">
+                            <img src="images/watch-ultra-2.jpg" alt="Apple Watch Ultra 2" class="product-image" onerror="this.src='https://placehold.co/600x400/11998e/white?text=Watch+Ultra+2'">
+                            <div class="product-tag tag-new">NEW</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-watch">Apple Watch</span>
+                            <h3 class="product-title">Apple Watch Ultra 2</h3>
+                            <p class="product-description">49mm Titanium • GPS+Cellular • 3000 nits</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #4A4A4A;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Action Button</span>
+                                <span class="feature-pill">Depth App</span>
+                                <span class="feature-pill">S9 Chip</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('Apple Watch Ultra 2')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apple Watch Series 9 -->
+                    <div class="product-item" data-category="watch" data-name="Apple Watch Series 9">
+                        <div class="product-media">
+                            <img src="images/watch-series-9.jpg" alt="Apple Watch Series 9" class="product-image" onerror="this.src='https://placehold.co/600x400/4158D0/white?text=Watch+Series+9'">
+                            <div class="product-tag tag-new">NEW</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-watch">Apple Watch</span>
+                            <h3 class="product-title">Apple Watch Series 9</h3>
+                            <p class="product-description">45mm • GPS/Cellular • S9 Chip</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #FFB6C1;"></span>
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #C0C0C0;"></span>
+                                <span class="color-dot" style="background: #FF0000;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Double Tap</span>
+                                <span class="feature-pill">Brighter Display</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('Apple Watch Series 9')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apple Watch SE -->
+                    <div class="product-item" data-category="watch" data-name="Apple Watch SE">
+                        <div class="product-media">
+                            <img src="images/watch-se.jpg" alt="Apple Watch SE" class="product-image" onerror="this.src='https://placehold.co/600x400/FDC830/black?text=Watch+SE'">
+                            <div class="product-tag tag-popular">BEST VALUE</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-watch">Apple Watch</span>
+                            <h3 class="product-title">Apple Watch SE 2</h3>
+                            <p class="product-description">44mm • GPS • Budget Friendly</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #C0C0C0;"></span>
+                                <span class="color-dot" style="background: #FFB6C1;"></span>
+                                <span class="color-dot" style="background: #4A4A4A;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Essential Features</span>
+                                <span class="feature-pill">Great Value</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('Apple Watch SE')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POWER BANKS & CHARGERS SECTION -->
+            <div class="category-section">
+                <div class="section-header-modern">
+                    <h2 class="section-title-modern">🔋 Power & Charging</h2>
+                    <a href="iphones.html" class="view-all-link">View All →</a>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- MagSafe Power Bank -->
+                    <div class="product-item" data-category="powerbank" data-name="MagSafe Power Bank">
+                        <div class="product-media">
+                            <img src="images/magsafe-battery.jpg" alt="MagSafe Power Bank" class="product-image" onerror="this.src='https://placehold.co/600x400/4158D0/white?text=MagSafe+Battery'">
+                            <div class="product-tag tag-popular">MAGSAFE</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-powerbank">Power Bank</span>
+                            <h3 class="product-title">MagSafe Battery Pack</h3>
+                            <p class="product-description">1460mAh • Wireless • Official Apple</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Snaps On</span>
+                                <span class="feature-pill">Wireless</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('MagSafe Battery Pack')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Anker 20000mAh -->
+                    <div class="product-item" data-category="powerbank" data-name="Anker 20000mAh">
+                        <div class="product-media">
+                            <img src="images/anker-powerbank.jpg" alt="Anker Power Bank" class="product-image" onerror="this.src='https://placehold.co/600x400/C850C0/white?text=Anker+20000mAh'">
+                            <div class="product-tag tag-popular">BESTSELLER</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-powerbank">Power Bank</span>
+                            <h3 class="product-title">Anker PowerCore 20000mAh</h3>
+                            <p class="product-description">USB-C PD • Fast Charge • 3 Ports</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Charges 7x</span>
+                                <span class="feature-pill">Multi-Device</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('Anker 20000mAh')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 20W USB-C Charger -->
+                    <div class="product-item" data-category="charger" data-name="Apple 20W Charger">
+                        <div class="product-media">
+                            <img src="images/apple-20w-charger.jpg" alt="20W Charger" class="product-image" onerror="this.src='https://placehold.co/600x400/11998e/white?text=20W+Charger'">
+                            <div class="product-tag tag-new">OFFICIAL</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-accessory">Charger</span>
+                            <h3 class="product-title">Apple 20W USB-C Charger</h3>
+                            <p class="product-description">Fast Charge • Official Apple</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Fast Charging</span>
+                                <span class="feature-pill">Compact</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('Apple 20W Charger')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3-in-1 Wireless Charger -->
+                    <div class="product-item" data-category="charger" data-name="3-in-1 Charger">
+                        <div class="product-media">
+                            <img src="images/3in1-charger.jpg" alt="3-in-1 Charger" class="product-image" onerror="this.src='https://placehold.co/600x400/FF512F/white?text=3-in-1+Charger'">
+                            <div class="product-tag tag-new">MULTI-DEVICE</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-accessory">Charger</span>
+                            <h3 class="product-title">3-in-1 Wireless Charging Station</h3>
+                            <p class="product-description">iPhone • Watch • AirPods • 15W</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Charge 3 Devices</span>
+                                <span class="feature-pill">Fast Wireless</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('3-in-1 Charger')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCESSORIES SECTION -->
+            <div class="category-section">
+                <div class="section-header-modern">
+                    <h2 class="section-title-modern">🎧 Premium Accessories</h2>
+                    <a href="iphones.html" class="view-all-link">View All →</a>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- AirPods Pro 2 -->
+                    <div class="product-item" data-category="accessory" data-name="AirPods Pro 2">
+                        <div class="product-media">
+                            <img src="images/airpods-pro-2.jpg" alt="AirPods Pro 2" class="product-image" onerror="this.src='https://placehold.co/600x400/4158D0/white?text=AirPods+Pro+2'">
+                            <div class="product-tag tag-new">NEW</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-accessory">Audio</span>
+                            <h3 class="product-title">AirPods Pro 2nd Gen</h3>
+                            <p class="product-description">ANC • Adaptive Audio • USB-C</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Noise Cancellation</span>
+                                <span class="feature-pill">Spatial Audio</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('AirPods Pro 2')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone Cases -->
+                    <div class="product-item" data-category="accessory" data-name="iPhone Cases">
+                        <div class="product-media">
+                            <img src="images/iphone-cases.jpg" alt="iPhone Cases" class="product-image" onerror="this.src='https://placehold.co/600x400/C850C0/white?text=iPhone+Cases'">
+                            <div class="product-tag tag-popular">SILICONE</div>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-accessory">Cases</span>
+                            <h3 class="product-title">iPhone 15/14 Series Cases</h3>
+                            <p class="product-description">Silicone • Clear • Leather • MagSafe</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #FF0000;"></span>
+                                <span class="color-dot" style="background: #000;"></span>
+                                <span class="color-dot" style="background: #87CEEB;"></span>
+                                <span class="color-dot" style="background: #FFB6C1;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">MagSafe Compatible</span>
+                                <span class="feature-pill">Drop Protection</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('iPhone Cases')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- USB-C Cables -->
+                    <div class="product-item" data-category="accessory" data-name="USB-C Cables">
+                        <div class="product-media">
+                            <img src="images/usb-cables.jpg" alt="USB-C Cables" class="product-image" onerror="this.src='https://placehold.co/600x400/11998e/white?text=USB-C+Cables'">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category-badge cat-accessory">Cables</span>
+                            <h3 class="product-title">USB-C to Lightning / USB-C</h3>
+                            <p class="product-description">1m • 2m • Braided • MFi Certified</p>
+                            <div class="color-options">
+                                <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
+                                <span class="color-dot" style="background: #000;"></span>
+                            </div>
+                            <div class="feature-pills">
+                                <span class="feature-pill">Fast Charging</span>
+                                <span class="feature-pill">Durable Braided</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="inquiry-btn-modern" onclick="inquire('USB-C Cables')">
+                                    <span>📞</span> Inquire Now
+                                </button>
+                                <button class="wishlist-btn">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRENDING BANNER -->
+            <div class="trending-banner">
+                <div class="trending-content">
+                    <h2>🔥 HOT DROPS</h2>
+                    <p>Get early access to the latest releases. Join our VIP list for exclusive offers!</p>
+                    <a href="contact.html" class="trending-btn">JOIN NOW</a>
+                </div>
+            </div>
+
+            <!-- NO RESULTS MESSAGE (Hidden by default) -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <h3>😕 No products found</h3>
+                <p>Try searching with different keywords</p>
+            </div>
+        </div>
     </main>
+
+    <!-- FOOTER -->
     <footer>
-    <div class="footer-decoration">
-        <div class="gold-line"></div>
-        <div class="zim-flag-strip"></div>
-    </div>
-    
-    <div class="footer-content">
-        <!-- Company Info Section -->
-        <div class="footer-section company-info">
-            <h3>🇿🇼 iSneakers ZW</h3>
-            <p class="footer-tagline">Step in Style • Talk in Tech</p>
-            <p class="company-description">
-                Zimbabwe's premier destination for authentic sneakers and the latest iPhones. 
-                Premium quality, guaranteed authenticity, and nationwide delivery.
-            </p>
-            
-            <!-- Trust Badges -->
-            <div class="trust-badges">
-                <span class="badge">✅ 100% Authentic</span>
-                <span class="badge">🇿🇼 Zimbabwe Owned</span>
-                <span class="badge">🚚 Nationwide Delivery</span>
-            </div>
-            
-            <!-- Social Media Links -->
-            <div class="social-links">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="#" class="social-icon" title="Facebook">📘</a>
-                    <a href="#" class="social-icon" title="Instagram">📷</a>
-                    <a href="#" class="social-icon" title="Twitter">🐦</a>
-                    <a href="#" class="social-icon" title="WhatsApp">📱</a>
-                    <a href="#" class="social-icon" title="TikTok">🎵</a>
-                </div>
-            </div>
+        <div class="footer-decoration">
+            <div class="gold-line"></div>
+            <div class="zim-flag-strip"></div>
         </div>
         
-        <!-- Quick Links Section -->
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-                <li><a href="index.html">🏠 Home</a></li>
-                <li><a href="products.html">📦 All Products</a></li>
-                <li><a href="iphones.html">📱 iPhones</a></li>
-                <li><a href="sneakers.html">👟 Sneakers</a></li>
-                <li><a href="promotions.html">🎉 Special Offers</a></li>
-                <li><a href="about.html">ℹ️ About Us</a></li>
-                <li><a href="contact.html">📞 Contact</a></li>
-                <li><a href="faq.html">❓ FAQ</a></li>
-            </ul>
-        </div>
-        
-        <!-- Contact Information Section - MOST IMPORTANT -->
-        <div class="footer-section contact-section">
-            <h3>📞 Contact Us</h3>
-            
-            <!-- Phone Numbers -->
-            <div class="contact-item">
-                <span class="contact-icon">📱</span>
-                <div class="contact-details">
-                    <strong>Call Us:</strong>
-                    <p><a href="tel:+263771234567">+263 77 123 4567</a> (Econet)</p>
-                    <p><a href="tel:+263712345678">+263 71 234 5678</a> (NetOne)</p>
-                    <p><a href="tel:+263731234567">+263 73 123 4567</a> (Telecel)</p>
+        <div class="footer-content">
+            <div class="footer-section company-info">
+                <h3>🇿🇼 iSneakers ZW</h3>
+                <p class="footer-tagline">Step in Style • Talk in Tech</p>
+                <p class="company-description">
+                    Zimbabwe's premier destination for authentic sneakers and the latest iPhones. 
+                    Premium quality, guaranteed authenticity, and nationwide delivery.
+                </p>
+                
+                <div class="trust-badges">
+                    <span class="badge">✅ 100% Authentic</span>
+                    <span class="badge">🇿🇼 Zimbabwe Owned</span>
+                    <span class="badge">🚚 Nationwide Delivery</span>
+                </div>
+                
+                <div class="social-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Facebook">📘</a>
+                        <a href="#" class="social-icon" title="Instagram">📷</a>
+                        <a href="#" class="social-icon" title="Twitter">🐦</a>
+                        <a href="#" class="social-icon" title="WhatsApp">📱</a>
+                        <a href="#" class="social-icon" title="TikTok">🎵</a>
+                    </div>
                 </div>
             </div>
             
-            <!-- WhatsApp -->
-            <div class="contact-item">
-                <span class="contact-icon">💬</span>
-                <div class="contact-details">
-                    <strong>WhatsApp Business:</strong>
-                    <p><a href="https://wa.me/263771234567" target="_blank" class="whatsapp-link">+263 77 123 4567</a></p>
-                    <p class="small-text">Click to chat • Quick response</p>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="products.html">📦 All Products</a></li>
+                    <li><a href="iphones.html">📱 iPhones</a></li>
+                    <li><a href="sneakers.html">👟 Sneakers</a></li>
+                    <li><a href="promotions.html">🎉 Special Offers</a></li>
+                    <li><a href="contact.html">📞 Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>📞 Contact Us</h3>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-details">
+                        <strong>Call Us:</strong>
+                        <p><a href="tel:+263771234567">+263 77 123 4567</a> (Econet)</p>
+                        <p><a href="tel:+263712345678">+263 71 234 5678</a> (NetOne)</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <div class="contact-details">
+                        <strong>WhatsApp:</strong>
+                        <p><a href="https://wa.me/263771234567" target="_blank" class="whatsapp-link">+263 77 123 4567</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-details">
+                        <strong>Email:</strong>
+                        <p><a href="mailto:info@isneakers.co.zw">info@isneakers.co.zw</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-details">
+                        <strong>Visit Us:</strong>
+                        <p>123 Sam Nujoma Street<br>Eastlea, Harare</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">🕒</span>
+                    <div class="contact-details">
+                        <strong>Hours:</strong>
+                        <p>Mon-Fri: 9AM-6PM<br>Sat: 9AM-3PM</p>
+                    </div>
                 </div>
             </div>
             
-            <!-- Email -->
-            <div class="contact-item">
-                <span class="contact-icon">📧</span>
-                <div class="contact-details">
-                    <strong>Email:</strong>
-                    <p><a href="mailto:info@isneakers.co.zw">info@isneakers.co.zw</a></p>
-                    <p><a href="mailto:sales@isneakers.co.zw">sales@isneakers.co.zw</a></p>
-                </div>
-            </div>
-            
-            <!-- Physical Address -->
-            <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                <div class="contact-details">
-                    <strong>Visit Our Store:</strong>
-                    <p>123 Sam Nujoma Street<br>
-                    Eastlea, Harare<br>
-                    Zimbabwe</p>
-                    <p class="landmark">Opposite Eastgate Mall</p>
-                </div>
-            </div>
-            
-            <!-- Business Hours -->
-            <div class="contact-item">
-                <span class="contact-icon">🕒</span>
-                <div class="contact-details">
-                    <strong>Business Hours:</strong>
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-                    Saturday: 9:00 AM - 3:00 PM<br>
-                    Sunday: Closed (Online orders 24/7)</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Map & Newsletter Section -->
-        <div class="footer-section">
-            <h3>📍 Find Us</h3>
-            <div class="map-placeholder">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.999!2d31.0333!3d-17.825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQ5JzMwLjAiUyAzMcKwMDInMDAuMCJF!5e0!3m2!1sen!2szw!4v1234567890!5m2!1sen!2szw" 
-                    width="100%" 
-                    height="200" 
-                    style="border:2px solid #D4AF37; border-radius:10px;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-            
-            <!-- Newsletter Signup -->
-            <div class="newsletter">
-                <h4>📰 Subscribe for Updates</h4>
-                <p>Get new arrivals & special offers</p>
+            <div class="footer-section">
+                <h3>📰 Newsletter</h3>
+                <p>Get updates on new arrivals & special offers</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
+                    <input type="email" placeholder="Your email" required>
                     <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
+                
+                <div class="payment-methods">
+                    <h4>We Accept:</h4>
+                    <div class="payment-icons">
+                        <span class="payment-icon">💵 Cash</span>
+                        <span class="payment-icon">💳 EcoCash</span>
+                        <span class="payment-icon">💳 Visa</span>
+                        <span class="payment-icon">💳 Mastercard</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Payment Methods -->
-    <div class="payment-methods">
-        <h4>We Accept:</h4>
-        <div class="payment-icons">
-            <span class="payment-icon">💵 Cash</span>
-            <span class="payment-icon">💳 EcoCash</span>
-            <span class="payment-icon">💳 Visa</span>
-            <span class="payment-icon">💳 Mastercard</span>
-            <span class="payment-icon">🏦 Bank Transfer</span>
-        </div>
-    </div>
-    
-    <!-- Copyright and Legal -->
-    <div class="footer-bottom">
-        <div class="footer-bottom-content">
-            <p>&copy; 2025 iSneakers ZW. All Rights Reserved.</p>
-            <p class="zim-pride">🇿🇼 Proudly Zimbabwean • Authentic Products • Nationwide Delivery</p>
-            <div class="legal-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="separator">|</span>
-                <a href="terms.html">Terms of Service</a>
-                <span class="separator">|</span>
-                <a href="shipping.html">Shipping Info</a>
-                <span class="separator">|</span>
-                <a href="returns.html">Returns Policy</a>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2025 iSneakers ZW. All Rights Reserved.</p>
+                <p class="zim-pride">🇿🇼 Proudly Zimbabwean • Authentic Products • Nationwide Delivery</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html">Terms</a>
+                    <span class="separator">|</span>
+                    <a href="shipping.html">Shipping</a>
+                    <span class="separator">|</span>
+                    <a href="returns.html">Returns</a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <!-- Search and Filter Script -->
+    <script>
+        // Search Function
+        function searchProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product-item');
+            let visibleCount = 0;
+            
+            products.forEach(product => {
+                const productName = product.dataset.name.toLowerCase();
+                const productCategory = product.dataset.category.toLowerCase();
+                
+                if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+            
+            // Update active pill
+            document.querySelectorAll('.pill').forEach(pill => pill.classList.remove('active'));
+            document.querySelector('.pill[onclick="filterCategory(\'all\')"]').classList.add('active');
+        }
+        
+        // Filter by Category
+        function filterCategory(category) {
+            // Update active pill
+            document.querySelectorAll('.pill').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const products = document.querySelectorAll('.product-item');
+            let visibleCount = 0;
+            
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            // Clear search input
+            document.getElementById('searchInput').value = '';
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+        
+        // Inquire Function
+        function inquire(productName) {
+            const message = `Hello! I'm interested in the ${productName}. Could you please provide the current price and availability?`;
+            window.open(`https://wa.me/263771234567?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        // Wishlist Function
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(1.3)';
+                this.style.color = '#FF512F';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+                alert('Added to wishlist!');
+            });
+        });
+        
+        // Enter key for search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchProducts();
+            }
+        });
+    </script>
 
     <script src="script.js"></script>
-</body>
-</html>
-    <h1>Products</h1>
-    <div class="tabs">
-        <button class="tablinks" onclick="openTab(event, 'Sneakers')">Sneakers</button>
-        <button class="tablinks" onclick="openTab(event, 'Iphones')">Iphones</button>
-    </div>
-
-    <div id="Sneakers" class="tabcontent">
-        <h3>Sneakers</h3>
-        <p>Here you can find a variety of sneakers.</p>
-        <!-- Add sneaker products here -->
-    </div>
-
-    <div id="Iphones" class="tabcontent">
-        <h3>Iphones</h3>
-        <p>Here you can find the latest iPhones.</p>
-        <!-- Add iPhone products here -->
-    </div>
-
-    <script>
-    function openTab(evt, tabName) {
-        // Hide all tab contents
-        var tabcontent = document.getElementsByClassName("tabcontent");
-        for (var i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        // Remove "active" class from all tab links
-        var tablinks = document.getElementsByClassName("tablinks");
-        for (var i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        // Show the current tab and add an "active" class to the button that opened the tab
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    </script>
 </body>
 </html>
