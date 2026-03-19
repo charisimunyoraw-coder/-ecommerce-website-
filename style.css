@@ -659,3 +659,429 @@ footer::before {
     0% { background-position: 0% center; }
     100% { background-position: 200% center; }
 }
+/* ========== FOOTER STYLES - LUXURY GOLD THEME ========== */
+
+footer {
+    background: linear-gradient(135deg, #1C1C1C 0%, #2C2C2C 50%, #1C1C1C 100%);
+    color: #FFF9E6;
+    margin-top: 80px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Decorative elements */
+.footer-decoration {
+    position: relative;
+}
+
+.gold-line {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #D4AF37, #FFD700, #D4AF37, transparent);
+    width: 100%;
+}
+
+.zim-flag-strip {
+    height: 5px;
+    background: linear-gradient(90deg, 
+        #006400 0%, #006400 25%,
+        #FFD200 25%, #FFD200 50%,
+        #FF0000 50%, #FF0000 75%,
+        #000000 75%, #000000 100%);
+}
+
+/* Footer content grid */
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Footer sections */
+.footer-section h3 {
+    color: #D4AF37;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    border-bottom: 2px solid #D4AF37;
+    padding-bottom: 10px;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.footer-section h4 {
+    color: #FFD700;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Company info */
+.footer-tagline {
+    color: #FFD700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.company-description {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #F5E7C8;
+}
+
+/* Trust badges */
+.trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.badge {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #D4AF37;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #FFD700;
+    font-weight: 600;
+}
+
+/* Social links */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid #D4AF37;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D4AF37;
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: #D4AF37;
+    color: #1C1C1C;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Footer links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #F5E7C8;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-links a::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #D4AF37;
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+.footer-links a:hover {
+    color: #D4AF37;
+    transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+    transform: rotate(180deg);
+}
+
+/* Contact section */
+.contact-section {
+    background: rgba(212, 175, 55, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: #D4AF37;
+    min-width: 35px;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-details strong {
+    color: #D4AF37;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.contact-details p {
+    margin: 5px 0;
+    color: #F5E7C8;
+    font-size: 14px;
+}
+
+.contact-details a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-details a:hover {
+    color: #D4AF37;
+    text-decoration: underline;
+}
+
+.whatsapp-link {
+    background: rgba(37, 211, 102, 0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid #25D366;
+}
+
+.small-text {
+    font-size: 12px;
+    color: #F5E7C8;
+    opacity: 0.8;
+}
+
+.landmark {
+    font-size: 13px;
+    color: #D4AF37;
+    font-style: italic;
+}
+
+/* Map placeholder */
+.map-placeholder {
+    margin: 20px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* Newsletter */
+.newsletter {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.newsletter h4 {
+    color: #D4AF37;
+    margin-bottom: 10px;
+}
+
+.newsletter p {
+    font-size: 13px;
+    margin-bottom: 15px;
+    color: #F5E7C8;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 12px;
+    border: 2px solid #D4AF37;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+    color: #F5E7C8;
+    opacity: 0.7;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: #FFD700;
+    background: rgba(255,255,255,0.15);
+}
+
+.subscribe-btn {
+    background: linear-gradient(135deg, #D4AF37, #FFD700);
+    color: #1C1C1C;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subscribe-btn:hover {
+    background: linear-gradient(135deg, #FFD700, #D4AF37);
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Payment methods */
+.payment-methods {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.payment-methods h4 {
+    color: #D4AF37;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.payment-icon {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    color: #F5E7C8;
+    border: 1px solid #D4AF37;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    background: #0A0A0A;
+    padding: 25px;
+    text-align: center;
+}
+
+.footer-bottom-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    margin: 8px 0;
+    color: #F5E7C8;
+    font-size: 14px;
+}
+
+.zim-pride {
+    color: #D4AF37 !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.legal-links {
+    margin-top: 15px;
+}
+
+.legal-links a {
+    color: #F5E7C8;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+    margin: 0 5px;
+}
+
+.legal-links a:hover {
+    color: #D4AF37;
+}
+
+.separator {
+    color: #D4AF37;
+    margin: 0 8px;
+    font-size: 12px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 20px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .payment-icons {
+        justify-content: center;
+    }
+    
+    .legal-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .separator {
+        display: none;
+    }
+}
+
+/* Animation for contact items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-item {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.contact-item:nth-child(1) { animation-delay: 0.1s; }
+.contact-item:nth-child(2) { animation-delay: 0.2s; }
+.contact-item:nth-child(3) { animation-delay: 0.3s; }
+.contact-item:nth-child(4) { animation-delay: 0.4s; }
+.contact-item:nth-child(5) { animation-delay: 0.5s; }
