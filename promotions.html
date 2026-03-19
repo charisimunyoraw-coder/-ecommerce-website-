@@ -3,17 +3,607 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promotions and News</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iSneakers ZW - Premium Sneakers & iPhones in Zimbabwe</title>
+    <title>iSneakers ZW - Hot Deals & Promotions</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== PROMOTIONS PAGE - ULTRA COLORFUL & EXCITING ===== */
+        
+        /* Import fun fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        /* Page Header - Explosive Style */
+        .promo-header {
+            background: linear-gradient(135deg, #FF416C, #FF4B2B, #FFD700, #FF1493);
+            background-size: 300% 300%;
+            animation: explosion 5s ease infinite;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        @keyframes explosion {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .promo-header::before {
+            content: '🎉🎊🎈';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            font-size: 200px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+            animation: confetti 3s linear infinite;
+        }
+        
+        .promo-header::after {
+            content: 'SALE • OFFER • DISCOUNT • SALE';
+            position: absolute;
+            bottom: 20px;
+            right: -100px;
+            font-size: 80px;
+            opacity: 0.1;
+            font-weight: 800;
+            white-space: nowrap;
+            color: white;
+            transform: rotate(-5deg);
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 10px;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes marquee {
+            from { right: -100px; }
+            to { right: 100%; }
+        }
+        
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(-15deg); }
+            50% { transform: translateY(-30px) rotate(-15deg); }
+            100% { transform: translateY(0) rotate(-15deg); }
+        }
+        
+        .promo-header h1 {
+            font-size: 90px;
+            margin-bottom: 15px;
+            font-weight: 900;
+            font-family: 'Bebas Neue', cursive;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            animation: popIn 1s ease-out;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .promo-header p {
+            font-size: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.2);
+            padding: 15px 40px;
+            border-radius: 60px;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255,255,255,0.3);
+            font-weight: 600;
+        }
+        
+        /* Mega Sale Banner */
+        .mega-sale {
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF4500);
+            padding: 30px;
+            margin: 40px 20px;
+            border-radius: 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(255,69,0,0.3);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .mega-sale h2 {
+            font-size: 60px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+        }
+        
+        .mega-sale p {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        /* Countdown Timer - Ultra Modern */
+        .countdown-container {
+            max-width: 800px;
+            margin: -30px auto 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 30px 60px rgba(255,65,108,0.3);
+            position: relative;
+            z-index: 10;
+            border: 4px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #FF416C, #FF4B2B, #FFD700) border-box;
+        }
+        
+        .countdown-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .countdown-timer-modern {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .timer-block {
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .timer-number {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            font-family: 'Bebas Neue', cursive;
+            text-shadow: 3px 3px 0 rgba(255,65,108,0.2);
+        }
+        
+        .timer-label {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #666;
+            letter-spacing: 2px;
+        }
+        
+        .timer-separator {
+            font-size: 48px;
+            color: #FF416C;
+            font-weight: 900;
+            align-self: flex-start;
+        }
+        
+        /* Offer Cards Grid */
+        .offers-grid {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Offer Card - Explosive Design */
+        .offer-card {
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            border: 3px solid transparent;
+            animation: cardFloat 0.6s ease-out;
+        }
+        
+        @keyframes cardFloat {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .offer-card:nth-child(1) { animation-delay: 0.1s; }
+        .offer-card:nth-child(2) { animation-delay: 0.2s; }
+        .offer-card:nth-child(3) { animation-delay: 0.3s; }
+        .offer-card:nth-child(4) { animation-delay: 0.4s; }
+        .offer-card:nth-child(5) { animation-delay: 0.5s; }
+        .offer-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .offer-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 40px 60px rgba(255,65,108,0.4);
+            border-color: #FF416C;
+        }
+        
+        /* Card Header with Gradient */
+        .offer-header {
+            padding: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: rotate 8s linear infinite;
+        }
+        
+        .offer-header.flash-sale { background: linear-gradient(135deg, #FF416C, #FF4B2B); }
+        .offer-header.bundle { background: linear-gradient(135deg, #FFD700, #FFA500); }
+        .offer-header.clearance { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+        .offer-header.free-gift { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .offer-header.seasonal { background: linear-gradient(135deg, #8E2DE2, #4A00E0); }
+        
+        .offer-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px 25px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        
+        .offer-badge.flash { color: #FF416C; }
+        .offer-badge.bundle { color: #FFA500; }
+        .offer-badge.clearance { color: #1e3c72; }
+        
+        .offer-discount {
+            font-size: 56px;
+            font-weight: 900;
+            font-family: 'Bebas Neue', cursive;
+            line-height: 1;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .offer-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .offer-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Offer Content */
+        .offer-content {
+            padding: 25px;
+        }
+        
+        .offer-products {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .product-tag-offer {
+            background: #f0f0f0;
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .offer-price-info {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 20px;
+        }
+        
+        .original-price {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .offer-price {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .save-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-left: auto;
+        }
+        
+        /* Progress Bar - Limited Stock */
+        .stock-progress {
+            margin: 20px 0;
+        }
+        
+        .stock-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .stock-bar {
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .stock-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF416C, #FF4B2B);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        /* Offer Footer */
+        .offer-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .claim-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            color: white;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .claim-btn:hover {
+            background: linear-gradient(135deg, #FF4B2B, #FF416C);
+            transform: translateX(5px);
+            box-shadow: 0 10px 20px rgba(255,65,108,0.3);
+        }
+        
+        .share-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #f0f0f0;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        
+        .share-btn:hover {
+            border-color: #FF416C;
+            transform: rotate(15deg);
+        }
+        
+        /* Flash Sale Banner */
+        .flash-sale-banner {
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            padding: 40px;
+            margin: 40px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flash-sale-banner::before {
+            content: '⚡⚡⚡';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+        
+        .flash-text h3 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .flash-text p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .flash-link {
+            background: white;
+            color: #FF416C;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .flash-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* Bundle Offers Grid */
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        
+        .bundle-item {
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid #f0f0f0;
+        }
+        
+        .bundle-item:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 25px 40px rgba(255,215,0,0.3);
+        }
+        
+        .bundle-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .bundle-item h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .bundle-items {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 24px;
+        }
+        
+        .bundle-price {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+        }
+        
+        .bundle-save {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        /* Limited Time Tag */
+        .limited-tag {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transform: rotate(-2deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .promo-header h1 {
+                font-size: 48px;
+            }
+            
+            .mega-sale h2 {
+                font-size: 36px;
+            }
+            
+            .timer-number {
+                font-size: 42px;
+            }
+            
+            .timer-block {
+                min-width: 80px;
+            }
+            
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flash-sale-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,7 +611,11 @@
             <div class="logo">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
                     <h1>🇿🇼 iSneakers ZW</h1>
-                    <p class="tagline">Step in Style • Talk in Tech</p>
+                    <p class="tagline">
+                        <span class="step-part">Step in Style</span> 
+                        <span class="dot">•</span> 
+                        <span class="tech-part">Talk in Tech</span>
+                    </p>
                 </a>
             </div>
             
@@ -31,7 +625,7 @@
                     <li><a href="products.html">Products</a></li>
                     <li><a href="iphones.html">iPhones</a></li>
                     <li><a href="sneakers.html">Sneakers</a></li>
-                    <li><a href="promotions.html">Promotions</a></li>
+                    <li><a href="promotions.html" class="active">Promotions</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -43,207 +637,576 @@
     </header>
 
     <main>
-        <!-- YOUR EXISTING PAGE CONTENT GOES HERE -->
-        <!-- Keep all your current product listings, etc. -->
-    </main>
-    <footer>
-    <div class="footer-decoration">
-        <div class="gold-line"></div>
-        <div class="zim-flag-strip"></div>
-    </div>
-    
-    <div class="footer-content">
-        <!-- Company Info Section -->
-        <div class="footer-section company-info">
-            <h3>🇿🇼 iSneakers ZW</h3>
-            <p class="footer-tagline">Step in Style • Talk in Tech</p>
-            <p class="company-description">
-                Zimbabwe's premier destination for authentic sneakers and the latest iPhones. 
-                Premium quality, guaranteed authenticity, and nationwide delivery.
+        <!-- EXPLOSIVE HEADER -->
+        <div class="promo-header">
+            <h1>🔥 MEGA PROMOTIONS 🔥</h1>
+            <p>Unbeatable Deals • Flash Sales • Exclusive Offers</p>
+        </div>
+
+        <!-- MEGA SALE BANNER -->
+        <div class="mega-sale">
+            <h2>🇿🇼 ZIMBABWE MEGA SALE 🇿🇼</h2>
+            <p>Biggest discounts of the year • Limited stock • Grab them fast!</p>
+        </div>
+
+        <!-- LIVE COUNTDOWN TIMER -->
+        <div class="countdown-container">
+            <div class="countdown-title">⏰ SALE ENDS IN</div>
+            <div class="countdown-timer-modern" id="countdown">
+                <div class="timer-block">
+                    <div class="timer-number" id="days">03</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-separator">:</div>
+                <div class="timer-block">
+                    <div class="timer-number" id="hours">12</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-separator">:</div>
+                <div class="timer-block">
+                    <div class="timer-number" id="minutes">45</div>
+                    <div class="timer-label">Minutes</div>
+                </div>
+                <div class="timer-separator">:</div>
+                <div class="timer-block">
+                    <div class="timer-number" id="seconds">30</div>
+                    <div class="timer-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLASH SALE OFFERS -->
+        <div class="offers-grid">
+            <!-- OFFER 1: iPhone 15 Pro Max Deal -->
+            <div class="offer-card">
+                <div class="offer-header flash-sale">
+                    <div class="offer-badge flash">⚡ FLASH SALE</div>
+                    <div class="offer-discount">-25%</div>
+                    <div class="offer-title">iPhone 15 Pro Max</div>
+                    <div class="offer-subtitle">Limited Stock • 1 Day Only</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-products">
+                        <span class="product-tag-offer">📱 iPhone 15 Pro Max</span>
+                        <span class="product-tag-offer">🔋 Fast Charger</span>
+                        <span class="product-tag-offer">🎧 USB-C Cable</span>
+                    </div>
+                    <div class="offer-price-info">
+                        <span class="original-price">$1,299</span>
+                        <span class="offer-price">$974</span>
+                        <span class="save-badge">SAVE $325</span>
+                    </div>
+                    <div class="stock-progress">
+                        <div class="stock-info">
+                            <span>🔥 Only 5 left!</span>
+                            <span>82% claimed</span>
+                        </div>
+                        <div class="stock-bar">
+                            <div class="stock-fill" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="offer-footer">
+                        <button class="claim-btn" onclick="claimOffer('iPhone 15 Pro Max - 25% OFF')">
+                            <span>⚡</span> CLAIM OFFER
+                        </button>
+                        <button class="share-btn" onclick="shareOffer('iPhone 15 Pro Max Deal')">🔗</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFER 2: SB Dunk Travis Scott -->
+            <div class="offer-card">
+                <div class="offer-header flash-sale">
+                    <div class="offer-badge flash">⚡ FLASH SALE</div>
+                    <div class="offer-discount">-20%</div>
+                    <div class="offer-title">SB Dunk Travis Scott</div>
+                    <div class="offer-subtitle">Grail Kicks • Rare Sizes</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-products">
+                        <span class="product-tag-offer">👟 SB Dunk Low</span>
+                        <span class="product-tag-offer">🌵 Cactus Jack</span>
+                        <span class="product-tag-offer">✨ Limited Edition</span>
+                    </div>
+                    <div class="offer-price-info">
+                        <span class="original-price">$1,200</span>
+                        <span class="offer-price">$960</span>
+                        <span class="save-badge">SAVE $240</span>
+                    </div>
+                    <div class="stock-progress">
+                        <div class="stock-info">
+                            <span>🔥 Only 3 pairs left!</span>
+                            <span>92% claimed</span>
+                        </div>
+                        <div class="stock-bar">
+                            <div class="stock-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="offer-footer">
+                        <button class="claim-btn" onclick="claimOffer('SB Dunk Travis Scott - 20% OFF')">
+                            <span>⚡</span> CLAIM OFFER
+                        </button>
+                        <button class="share-btn" onclick="shareOffer('SB Dunk Travis Scott Deal')">🔗</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFER 3: Apple Watch Ultra 2 Bundle -->
+            <div class="offer-card">
+                <div class="offer-header bundle">
+                    <div class="offer-badge bundle">🎁 BUNDLE</div>
+                    <div class="offer-discount">-30%</div>
+                    <div class="offer-title">Apple Watch Ultra 2</div>
+                    <div class="offer-subtitle">+ Extra Bands + Screen Protector</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-products">
+                        <span class="product-tag-offer">⌚ Ultra 2</span>
+                        <span class="product-tag-offer">🔄 3 Bands</span>
+                        <span class="product-tag-offer">🛡️ Protector</span>
+                    </div>
+                    <div class="offer-price-info">
+                        <span class="original-price">$899</span>
+                        <span class="offer-price">$629</span>
+                        <span class="save-badge">SAVE $270</span>
+                    </div>
+                    <div class="stock-progress">
+                        <div class="stock-info">
+                            <span>🔥 8 bundles left</span>
+                            <span>65% claimed</span>
+                        </div>
+                        <div class="stock-bar">
+                            <div class="stock-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="offer-footer">
+                        <button class="claim-btn" onclick="claimOffer('Apple Watch Ultra 2 Bundle - 30% OFF')">
+                            <span>🎁</span> CLAIM BUNDLE
+                        </button>
+                        <button class="share-btn" onclick="shareOffer('Apple Watch Ultra Bundle')">🔗</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFER 4: Jordan 4 & 5 Bundle -->
+            <div class="offer-card">
+                <div class="offer-header bundle">
+                    <div class="offer-badge bundle">🔥 DOUBLE DEAL</div>
+                    <div class="offer-discount">-25%</div>
+                    <div class="offer-title">Jordan 4 + Jordan 5</div>
+                    <div class="offer-subtitle">Buy Both • Save Big</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-products">
+                        <span class="product-tag-offer">👟 Jordan 4 Bred</span>
+                        <span class="product-tag-offer">👟 Jordan 5 Fire Red</span>
+                        <span class="product-tag-offer">✨ Free Shipping</span>
+                    </div>
+                    <div class="offer-price-info">
+                        <span class="original-price">$650</span>
+                        <span class="offer-price">$487</span>
+                        <span class="save-badge">SAVE $163</span>
+                    </div>
+                    <div class="stock-progress">
+                        <div class="stock-info">
+                            <span>🔥 6 bundles left</span>
+                            <span>78% claimed</span>
+                        </div>
+                        <div class="stock-bar">
+                            <div class="stock-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div class="offer-footer">
+                        <button class="claim-btn" onclick="claimOffer('Jordan 4 & 5 Bundle - 25% OFF')">
+                            <span>🔥</span> CLAIM BUNDLE
+                        </button>
+                        <button class="share-btn" onclick="shareOffer('Jordan 4 & 5 Bundle')">🔗</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFER 5: TN Clearance -->
+            <div class="offer-card">
+                <div class="offer-header clearance">
+                    <div class="offer-badge clearance">🏷️ CLEARANCE</div>
+                    <div class="offer-discount">-40%</div>
+                    <div class="offer-title">TN Air Max Plus</div>
+                    <div class="offer-subtitle">Selected Colors • Last Chance</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-products">
+                        <span class="product-tag-offer">👟 TN Hyper Blue</span>
+                        <span class="product-tag-offer">👟 TN Sunset</span>
+                        <span class="product-tag-offer">👟 TN Volt</span>
+                    </div>
+                    <div class="offer-price-info">
+                        <span class="original-price">$220</span>
+                        <span class="offer-price">$132</span>
+                        <span class="save-badge">SAVE $88</span>
+                    </div>
+                    <div class="stock-progress">
+                        <div class="stock-info">
+                            <span>🔥 Limited sizes</span>
+                            <span>95% claimed</span>
+                        </div>
+                        <div class="stock-bar">
+                            <div class="stock-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="offer-footer">
+                        <button class="claim-btn" onclick="claimOffer('TN Air Max Plus - 40% OFF')">
+                            <span>🏷️</span> GRAB DEAL
+                        </button>
+                        <button class="share-btn" onclick="shareOffer('TN Clearance Deal')">🔗</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFER 6: Power Bank + Charger Bundle -->
+            <div class="offer-card">
+                <div class="offer-header free-gift">
+                    <div class="offer-badge free">🎁 FREE GIFT</div>
+                    <div class="offer-discount">-35%</div>
+                    <div class="offer-title">Power Bundle</div>
+                    <div class="offer-subtitle">Power Bank + Charger + Cable</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-products">
+                        <span class="product-tag-offer">🔋 Anker 20k mAh</span>
+                        <span class="product-tag-offer">⚡ 30W Charger</span>
+                        <span class="product-tag-offer">🔌 2m Cable FREE</span>
+                    </div>
+                    <div class="offer-price-info">
+                        <span class="original-price">$120</span>
+                        <span class="offer-price">$78</span>
+                        <span class="save-badge">SAVE $42</span>
+                    </div>
+                    <div class="stock-progress">
+                        <div class="stock-info">
+                            <span>🔥 15 bundles left</span>
+                            <span>45% claimed</span>
+                        </div>
+                        <div class="stock-bar">
+                            <div class="stock-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="offer-footer">
+                        <button class="claim-btn" onclick="claimOffer('Power Bundle - 35% OFF + Free Cable')">
+                            <span>🎁</span> CLAIM NOW
+                        </button>
+                        <button class="share-btn" onclick="shareOffer('Power Bundle Deal')">🔗</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLASH SALE BANNER -->
+        <div class="flash-sale-banner">
+            <div class="flash-text">
+                <h3>⚡ MIDNIGHT FLASH SALE ⚡</h3>
+                <p>Extra 10% off on all items • 12AM - 6AM only</p>
+            </div>
+            <a href="products.html" class="flash-link">SHOP NOW →</a>
+        </div>
+
+        <!-- BUNDLE OFFERS SECTION -->
+        <h2 style="text-align: center; font-size: 42px; margin: 60px 0 20px;">
+            <span style="background: linear-gradient(135deg, #FF416C, #FF4B2B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🎁 SPECIAL BUNDLES
+            </span>
+        </h2>
+        
+        <div class="bundle-grid">
+            <!-- Bundle 1 -->
+            <div class="bundle-item">
+                <div class="bundle-icon">📱+👟</div>
+                <h4>iPhone + Sneakers</h4>
+                <div class="bundle-items">
+                    <span>iPhone 15</span>
+                    <span>+</span>
+                    <span>Jordan 4</span>
+                </div>
+                <div class="bundle-price">$1,299</div>
+                <div class="bundle-save">SAVE $200</div>
+                <button class="claim-btn" style="margin-top: 15px;" onclick="claimOffer('iPhone + Sneakers Bundle')">VIEW BUNDLE</button>
+            </div>
+            
+            <!-- Bundle 2 -->
+            <div class="bundle-item">
+                <div class="bundle-icon">⌚+🎧</div>
+                <h4>Apple Trio</h4>
+                <div class="bundle-items">
+                    <span>Watch Ultra</span>
+                    <span>+</span>
+                    <span>AirPods Pro</span>
+                </div>
+                <div class="bundle-price">$1,099</div>
+                <div class="bundle-save">SAVE $150</div>
+                <button class="claim-btn" style="margin-top: 15px;" onclick="claimOffer('Apple Trio Bundle')">VIEW BUNDLE</button>
+            </div>
+            
+            <!-- Bundle 3 -->
+            <div class="bundle-item">
+                <div class="bundle-icon">👟+👟</div>
+                <h4>Double Kicks</h4>
+                <div class="bundle-items">
+                    <span>SB Dunk</span>
+                    <span>+</span>
+                    <span>TN</span>
+                </div>
+                <div class="bundle-price">$599</div>
+                <div class="bundle-save">SAVE $180</div>
+                <button class="claim-btn" style="margin-top: 15px;" onclick="claimOffer('Double Kicks Bundle')">VIEW BUNDLE</button>
+            </div>
+            
+            <!-- Bundle 4 -->
+            <div class="bundle-item">
+                <div class="bundle-icon">🔋⚡</div>
+                <h4>Charging Station</h4>
+                <div class="bundle-items">
+                    <span>3-in-1 Charger</span>
+                    <span>+</span>
+                    <span>20k mAh Bank</span>
+                </div>
+                <div class="bundle-price">$159</div>
+                <div class="bundle-save">SAVE $60</div>
+                <button class="claim-btn" style="margin-top: 15px;" onclick="claimOffer('Charging Station Bundle')">VIEW BUNDLE</button>
+            </div>
+        </div>
+
+        <!-- LIMITED TIME TAGS SECTION -->
+        <div style="position: relative; max-width: 1400px; margin: 80px auto; padding: 40px; background: linear-gradient(135deg, #FF416C10, #FF4B2B10); border-radius: 60px;">
+            <h2 style="text-align: center; font-size: 42px; margin-bottom: 40px;">
+                <span style="background: linear-gradient(135deg, #FF416C, #FF4B2B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    ⏰ EXPIRING SOON
+                </span>
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="text-align: center; padding: 20px;">
+                    <div class="limited-tag" style="position: relative; top: 0; left: 0; display: inline-block;">🔥 2 HOURS LEFT</div>
+                    <p style="margin-top: 20px; font-weight: 600;">iPhone 15 Pro Max Deal</p>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div class="limited-tag" style="position: relative; top: 0; left: 0; display: inline-block;">⚡ 5 LEFT</div>
+                    <p style="margin-top: 20px; font-weight: 600;">SB Dunk Travis Scott</p>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div class="limited-tag" style="position: relative; top: 0; left: 0; display: inline-block;">🎁 TODAY ONLY</div>
+                    <p style="margin-top: 20px; font-weight: 600;">Watch Ultra Bundle</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #FF416C, #FF4B2B); margin: 40px 0 0; color: white;">
+            <h2 style="font-size: 48px; margin-bottom: 20px;">DON'T MISS OUT! 🏃‍♂️</h2>
+            <p style="font-size: 20px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                These deals won't last long. Grab them before they're gone!
             </p>
-            
-            <!-- Trust Badges -->
-            <div class="trust-badges">
-                <span class="badge">✅ 100% Authentic</span>
-                <span class="badge">🇿🇼 Zimbabwe Owned</span>
-                <span class="badge">🚚 Nationwide Delivery</span>
-            </div>
-            
-            <!-- Social Media Links -->
-            <div class="social-links">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="#" class="social-icon" title="Facebook">📘</a>
-                    <a href="#" class="social-icon" title="Instagram">📷</a>
-                    <a href="#" class="social-icon" title="Twitter">🐦</a>
-                    <a href="#" class="social-icon" title="WhatsApp">📱</a>
-                    <a href="#" class="social-icon" title="TikTok">🎵</a>
-                </div>
+            <div style="display: flex; gap: 20px; justify-content: center;">
+                <a href="products.html" style="padding: 15px 40px; background: white; color: #FF416C; text-decoration: none; border-radius: 50px; font-weight: 800;">SHOP ALL DEALS</a>
+                <a href="contact.html" style="padding: 15px 40px; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 800; border: 2px solid white;">CONTACT US</a>
             </div>
         </div>
-        
-        <!-- Quick Links Section -->
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-                <li><a href="index.html">🏠 Home</a></li>
-                <li><a href="products.html">📦 All Products</a></li>
-                <li><a href="iphones.html">📱 iPhones</a></li>
-                <li><a href="sneakers.html">👟 Sneakers</a></li>
-                <li><a href="promotions.html">🎉 Special Offers</a></li>
-                <li><a href="about.html">ℹ️ About Us</a></li>
-                <li><a href="contact.html">📞 Contact</a></li>
-                <li><a href="faq.html">❓ FAQ</a></li>
-            </ul>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-decoration">
+            <div class="gold-line"></div>
+            <div class="zim-flag-strip"></div>
         </div>
         
-        <!-- Contact Information Section - MOST IMPORTANT -->
-        <div class="footer-section contact-section">
-            <h3>📞 Contact Us</h3>
-            
-            <!-- Phone Numbers -->
-            <div class="contact-item">
-                <span class="contact-icon">📱</span>
-                <div class="contact-details">
-                    <strong>Call Us:</strong>
-                    <p><a href="tel:+263771234567">+263 77 123 4567</a> (Econet)</p>
-                    <p><a href="tel:+263712345678">+263 71 234 5678</a> (NetOne)</p>
-                    <p><a href="tel:+263731234567">+263 73 123 4567</a> (Telecel)</p>
+        <div class="footer-content">
+            <div class="footer-section company-info">
+                <h3>🇿🇼 iSneakers ZW</h3>
+                <p class="footer-tagline">Step in Style • Talk in Tech</p>
+                <p class="company-description">
+                    Zimbabwe's premier destination for authentic sneakers and the latest iPhones. 
+                    Premium quality, guaranteed authenticity, and nationwide delivery.
+                </p>
+                
+                <div class="trust-badges">
+                    <span class="badge">✅ 100% Authentic</span>
+                    <span class="badge">🇿🇼 Zimbabwe Owned</span>
+                    <span class="badge">🚚 Nationwide Delivery</span>
+                </div>
+                
+                <div class="social-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Facebook">📘</a>
+                        <a href="#" class="social-icon" title="Instagram">📷</a>
+                        <a href="#" class="social-icon" title="Twitter">🐦</a>
+                        <a href="#" class="social-icon" title="WhatsApp">📱</a>
+                        <a href="#" class="social-icon" title="TikTok">🎵</a>
+                    </div>
                 </div>
             </div>
             
-            <!-- WhatsApp -->
-            <div class="contact-item">
-                <span class="contact-icon">💬</span>
-                <div class="contact-details">
-                    <strong>WhatsApp Business:</strong>
-                    <p><a href="https://wa.me/263771234567" target="_blank" class="whatsapp-link">+263 77 123 4567</a></p>
-                    <p class="small-text">Click to chat • Quick response</p>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="products.html">📦 All Products</a></li>
+                    <li><a href="iphones.html">📱 iPhones</a></li>
+                    <li><a href="sneakers.html">👟 Sneakers</a></li>
+                    <li><a href="promotions.html">🎉 Special Offers</a></li>
+                    <li><a href="contact.html">📞 Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>📞 Contact Us</h3>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-details">
+                        <strong>Call Us:</strong>
+                        <p><a href="tel:+263771234567">+263 77 123 4567</a> (Econet)</p>
+                        <p><a href="tel:+263712345678">+263 71 234 5678</a> (NetOne)</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <div class="contact-details">
+                        <strong>WhatsApp:</strong>
+                        <p><a href="https://wa.me/263771234567" target="_blank" class="whatsapp-link">+263 77 123 4567</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-details">
+                        <strong>Email:</strong>
+                        <p><a href="mailto:info@isneakers.co.zw">info@isneakers.co.zw</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-details">
+                        <strong>Visit Us:</strong>
+                        <p>123 Sam Nujoma Street<br>Eastlea, Harare</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">🕒</span>
+                    <div class="contact-details">
+                        <strong>Hours:</strong>
+                        <p>Mon-Fri: 9AM-6PM<br>Sat: 9AM-3PM</p>
+                    </div>
                 </div>
             </div>
             
-            <!-- Email -->
-            <div class="contact-item">
-                <span class="contact-icon">📧</span>
-                <div class="contact-details">
-                    <strong>Email:</strong>
-                    <p><a href="mailto:info@isneakers.co.zw">info@isneakers.co.zw</a></p>
-                    <p><a href="mailto:sales@isneakers.co.zw">sales@isneakers.co.zw</a></p>
-                </div>
-            </div>
-            
-            <!-- Physical Address -->
-            <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                <div class="contact-details">
-                    <strong>Visit Our Store:</strong>
-                    <p>123 Sam Nujoma Street<br>
-                    Eastlea, Harare<br>
-                    Zimbabwe</p>
-                    <p class="landmark">Opposite Eastgate Mall</p>
-                </div>
-            </div>
-            
-            <!-- Business Hours -->
-            <div class="contact-item">
-                <span class="contact-icon">🕒</span>
-                <div class="contact-details">
-                    <strong>Business Hours:</strong>
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-                    Saturday: 9:00 AM - 3:00 PM<br>
-                    Sunday: Closed (Online orders 24/7)</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Map & Newsletter Section -->
-        <div class="footer-section">
-            <h3>📍 Find Us</h3>
-            <div class="map-placeholder">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.999!2d31.0333!3d-17.825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQ5JzMwLjAiUyAzMcKwMDInMDAuMCJF!5e0!3m2!1sen!2szw!4v1234567890!5m2!1sen!2szw" 
-                    width="100%" 
-                    height="200" 
-                    style="border:2px solid #D4AF37; border-radius:10px;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-            
-            <!-- Newsletter Signup -->
-            <div class="newsletter">
-                <h4>📰 Subscribe for Updates</h4>
-                <p>Get new arrivals & special offers</p>
+            <div class="footer-section">
+                <h3>📰 Newsletter</h3>
+                <p>Get updates on new arrivals & special offers</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
+                    <input type="email" placeholder="Your email" required>
                     <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
+                
+                <div class="payment-methods">
+                    <h4>We Accept:</h4>
+                    <div class="payment-icons">
+                        <span class="payment-icon">💵 Cash</span>
+                        <span class="payment-icon">💳 EcoCash</span>
+                        <span class="payment-icon">💳 Visa</span>
+                        <span class="payment-icon">💳 Mastercard</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Payment Methods -->
-    <div class="payment-methods">
-        <h4>We Accept:</h4>
-        <div class="payment-icons">
-            <span class="payment-icon">💵 Cash</span>
-            <span class="payment-icon">💳 EcoCash</span>
-            <span class="payment-icon">💳 Visa</span>
-            <span class="payment-icon">💳 Mastercard</span>
-            <span class="payment-icon">🏦 Bank Transfer</span>
-        </div>
-    </div>
-    
-    <!-- Copyright and Legal -->
-    <div class="footer-bottom">
-        <div class="footer-bottom-content">
-            <p>&copy; 2025 iSneakers ZW. All Rights Reserved.</p>
-            <p class="zim-pride">🇿🇼 Proudly Zimbabwean • Authentic Products • Nationwide Delivery</p>
-            <div class="legal-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="separator">|</span>
-                <a href="terms.html">Terms of Service</a>
-                <span class="separator">|</span>
-                <a href="shipping.html">Shipping Info</a>
-                <span class="separator">|</span>
-                <a href="returns.html">Returns Policy</a>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2025 iSneakers ZW. All Rights Reserved.</p>
+                <p class="zim-pride">🇿🇼 Proudly Zimbabwean • Authentic Products • Nationwide Delivery</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html">Terms</a>
+                    <span class="separator">|</span>
+                    <a href="shipping.html">Shipping</a>
+                    <span class="separator">|</span>
+                    <a href="returns.html">Returns</a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        // Set the date we're counting down to (3 days from now)
+        let countDownDate = new Date();
+        countDownDate.setDate(countDownDate.getDate() + 3);
+        countDownDate.setHours(23, 59, 59, 0);
+
+        // Update the countdown every 1 second
+        let countdownTimer = setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countDownDate - now;
+
+            // Time calculations
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            // If the countdown is over
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }, 1000);
+
+        // Claim Offer Function
+        function claimOffer(offerName) {
+            const message = `Hello! I'm interested in the ${offerName}. Please help me claim this offer!`;
+            window.open(`https://wa.me/263771234567?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Share Offer Function
+        function shareOffer(offerName) {
+            const message = `Check out this amazing deal at iSneakers ZW: ${offerName}! 🎉`;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'iSneakers ZW Deal',
+                    text: message,
+                    url: window.location.href,
+                });
+            } else {
+                alert('Share this deal: ' + message);
+            }
+        }
+
+        // Animate stock bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.getAttribute('style').split('width: ')[1];
+                }
+            });
+        });
+
+        document.querySelectorAll('.stock-fill').forEach(fill => {
+            observer.observe(fill);
+        });
+    </script>
 
     <script src="script.js"></script>
-</body>
-</html>
-    <header>
-        <h1>Latest Promotions</h1>
-    </header>
-    <main>
-        <section id="sale-banners">
-            <h2>Current Sale Banners</h2>
-            <div class="banner">
-                <img src="banner1.jpg" alt="Sale Banner 1">
-                <p>Get 30% off on all items this weekend!</p>
-            </div>
-            <div class="banner">
-                <img src="banner2.jpg" alt="Sale Banner 2">
-                <p>Buy one, get one free on select products!</p>
-            </div>
-        </section>
-        <section id="news-cards">
-            <h2>Latest News</h2>
-            <div class="news-card">
-                <h3>New Collection Launch</h3>
-                <p>Check out our new spring collection available now!</p>
-            </div>
-            <div class="news-card">
-                <h3>Store Opening</h3>
-                <p>We are opening a new store in your area! Come visit us!</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 E-commerce Website</p>
-    </footer>
 </body>
 </html>
