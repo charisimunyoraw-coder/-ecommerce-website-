@@ -1,141 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* iSneakers ZW - LUXURY GOLD THEME */
+/* Premium look for sneakers and iPhones */
 
-body {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #f8f9fa;
-}
-
-/* NAVBAR */
-.navbar {
-    background-color: #000 !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white !important;
-}
-
-.nav-link {
-    color: white !important;
-    margin-left: 15px;
-    transition: 0.3s;
-  }
-
-.nav-link:hover {
-    color: #ddd !important;
-}
-
-/* CARDS */
-.card {
-    border: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    border-radius: 8px;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-title {
-    font-weight: bold;
-    color: #000;
-}
-}
-
-.card-text {
-    color: #666;
-}
-
-/* BUTTONS */
-.btn-dark {
-    background-color: #000;
-    border: none;
-    transition: 0.3s;
-}
-
-.btn-dark:hover {
-    background-color: #333;
-    color: white;
-}
-
-.btn-light {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #ddd;
-}
-
-.btn-light:hover {
-    background-color: #f0f0f0;
-}
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-/* FOOTER */
-footer {
-    background-color: #000 !important;
-    color: white;
-    margin-top: 50px;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* HEADINGS */
-h1, h2, h3 {
-    color: #000;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-/* FORMS */
-.form-control {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.form-control:focus {
-    border-color: #000;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    h2 {
-        font-size: 1.4rem;
-    }
-  .container {
-        padding: 10px;
-    }
-/* iSneakers ZW - Main Stylesheet */
+/* Import elegant font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap');
 
 /* Reset and base styles */
 * {
@@ -145,120 +12,315 @@ h1, h2, h3 {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg, #fdfbfb 0%, #f5f0e7 100%);
+}
+
+/* Luxury Gold color variables */
+:root {
+    --gold-primary: #D4AF37;        /* Main gold */
+    --gold-light: #F5E7C8;           /* Light gold */
+    --gold-dark: #996515;            /* Dark gold */
+    --gold-metallic: #FFD700;         /* Bright gold */
+    --black-luxury: #1C1C1C;          /* Rich black */
+    --cream: #FFF9E6;                 /* Cream white */
+    --brown-luxury: #8B7355;          /* Leather brown */
+    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #996515 100%);
 }
 
 /* Header styles */
 header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: linear-gradient(to right, #1C1C1C, #2C2C2C);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 2px solid var(--gold-primary);
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Logo styles */
+/* Luxury Logo styles */
+.logo {
+    position: relative;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
 .logo h1 {
-    font-size: 28px;
-    color: #2c3e50;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #D4AF37, #FFD700, #FDB931);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
 }
 
 .logo h1::before {
-    content: "👟📱 ";
-    font-size: 24px;
+    content: "✦";
+    font-size: 30px;
+    margin-right: 10px;
+    background: none;
+    -webkit-text-fill-color: #D4AF37;
+}
+
+.logo h1::after {
+    content: "✦";
+    font-size: 30px;
+    margin-left: 10px;
+    background: none;
+    -webkit-text-fill-color: #D4AF37;
 }
 
 .logo .tagline {
     font-size: 12px;
-    color: #27ae60;
+    color: var(--gold-light);
     margin: 5px 0 0;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 /* Navigation */
 nav ul {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 30px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #2c3e50;
+    color: var(--cream);
     font-weight: 600;
     font-size: 14px;
-    transition: color 0.3s;
+    transition: all 0.3s;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold-gradient);
+    transition: width 0.3s;
 }
 
 nav ul li a:hover {
-    color: #27ae60;
+    color: var(--gold-primary);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* Cart icon */
 .cart-icon {
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
     position: relative;
+    color: var(--gold-primary);
 }
 
 .cart-count {
     position: absolute;
     top: -8px;
     right: -8px;
-    background: #27ae60;
-    color: white;
+    background: var(--gold-primary);
+    color: var(--black-luxury);
     font-size: 12px;
     padding: 2px 6px;
     border-radius: 50%;
+    font-weight: bold;
+    border: 1px solid var(--cream);
 }
 
 /* Main content */
 main {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 0 30px;
     min-height: 60vh;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--black-luxury);
+}
+
+h2 {
+    font-size: 42px;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gold-gradient);
+}
+
+/* Product grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+    transition: all 0.4s;
+    position: relative;
+    border: 1px solid var(--gold-light);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+    border-color: var(--gold-primary);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold-gradient);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+}
+
+.product-card:hover::before {
+    transform: scaleX(1);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #f5f0e7, #e8e0d5);
+    transition: transform 0.4s;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 25px;
+    background: linear-gradient(to bottom, #ffffff, #fafafa);
+}
+
+.product-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--black-luxury);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.product-price {
+    font-size: 24px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.add-to-cart {
+    background: linear-gradient(135deg, #1C1C1C, #2C2C2C);
+    color: var(--gold-primary);
+    border: 2px solid var(--gold-primary);
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.add-to-cart:hover {
+    background: var(--gold-primary);
+    color: var(--black-luxury);
+    border-color: var(--black-luxury);
 }
 
 /* Footer */
 footer {
-    background: #2c3e50;
-    color: white;
-    margin-top: 50px;
+    background: linear-gradient(135deg, #1C1C1C, #2C2C2C, #1C1C1C);
+    color: var(--cream);
+    margin-top: 80px;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold-gradient);
 }
 
 .footer-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 40px;
 }
 
 .footer-section h3 {
-    color: #27ae60;
-    margin-bottom: 20px;
-    font-size: 18px;
-    border-bottom: 2px solid #27ae60;
+    color: var(--gold-primary);
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    border-bottom: 2px solid var(--gold-primary);
     padding-bottom: 10px;
     display: inline-block;
 }
@@ -268,120 +330,183 @@ footer {
 }
 
 .footer-section ul li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .footer-section a {
-    color: #ecf0f1;
+    color: var(--cream);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-section a::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold-primary);
+    font-size: 12px;
 }
 
 .footer-section a:hover {
-    color: #27ae60;
+    color: var(--gold-primary);
+    padding-left: 20px;
 }
 
+/* Social links */
 .social-links {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .social-links a {
     display: inline-block;
-    margin-right: 15px;
-    font-size: 20px;
+    margin-right: 20px;
+    font-size: 24px;
+    color: var(--cream);
+    transition: all 0.3s;
+    padding-left: 0;
 }
 
+.social-links a::before {
+    display: none;
+}
+
+.social-links a:hover {
+    color: var(--gold-primary);
+    transform: translateY(-3px);
+}
+
+/* Footer bottom */
 .footer-bottom {
-    background: #1a2632;
+    background: #0A0A0A;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     font-size: 14px;
-    border-top: 1px solid #34495e;
+    border-top: 1px solid var(--gold-dark);
+    position: relative;
 }
 
 .footer-bottom p {
-    margin: 5px 0;
+    margin: 8px 0;
+    color: var(--cream);
+    letter-spacing: 1px;
 }
 
-/* Zimbabwe flag colors accent */
-.zim-strip {
-    height: 5px;
-    background: linear-gradient(90deg, #006400 25%, #FFD200 25%, #FFD200 50%, #FF0000 50%, #FF0000 75%, #000000 75%);
-    width: 100%;
+.footer-bottom p:last-child {
+    color: var(--gold-primary);
+    font-weight: 600;
 }
 
-/* Product grid (if not already in your CSS) */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.product-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background: #f0f0f0;
-}
-
-.product-info {
-    padding: 20px;
-}
-
-.product-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #2c3e50;
-}
-
-.product-price {
-    font-size: 20px;
-    color: #27ae60;
+/* Luxury badges and accents */
+.luxury-badge {
+    background: var(--gold-gradient);
+    color: var(--black-luxury);
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 12px;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
 }
 
-.add-to-cart {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.gold-border {
+    border: 2px solid var(--gold-primary);
+}
+
+/* Contact page */
+.contact-info {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--gold-light);
+}
+
+.contact-info h3 {
+    color: var(--gold-primary);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
     width: 100%;
-    font-size: 16px;
-    transition: background 0.3s;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid var(--gold-light);
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
 }
 
-.add-to-cart:hover {
-    background: #219a52;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.contact-form button {
+    background: linear-gradient(135deg, #1C1C1C, #2C2C2C);
+    color: var(--gold-primary);
+    border: 2px solid var(--gold-primary);
+    padding: 15px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.contact-form button:hover {
+    background: var(--gold-primary);
+    color: var(--black-luxury);
+}
+
+/* WhatsApp button */
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 600;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E, #075E54);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        gap: 15px;
+        gap: 20px;
         text-align: center;
+    }
+    
+    .logo h1 {
+        font-size: 28px;
     }
     
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
+    }
+    
+    h2 {
+        font-size: 32px;
     }
     
     .footer-content {
@@ -392,49 +517,59 @@ footer {
     .footer-section h3 {
         display: block;
     }
-}
-
-/* Contact page specific */
-.contact-info {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.contact-form button {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* WhatsApp button */
-.whatsapp-btn {
-    background: #25D366;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.whatsapp-btn:hover {
-    background: #128C7E;
-}
-    .card {
-        margin-bottom: 20px;
+    
+    .footer-section a::before {
+        display: none;
     }
+}
+
+/* Loading animation */
+@keyframes goldShimmer {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.gold-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    background-size: 200% 100%;
+    animation: goldShimmer 2s infinite;
+}
+
+/* Product badges (New, Sale, etc.) */
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--gold-gradient);
+    color: var(--black-luxury);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Promotions page */
+.promo-card {
+    background: linear-gradient(135deg, #1C1C1C, #2C2C2C);
+    color: var(--gold-primary);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid var(--gold-primary);
+}
+
+.promo-card h3 {
+    color: var(--gold-primary);
+    font-size: 32px;
+}
+
+.promo-code {
+    font-size: 24px;
+    letter-spacing: 5px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
 }
