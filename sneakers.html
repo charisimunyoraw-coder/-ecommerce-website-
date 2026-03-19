@@ -3,27 +3,1478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Sneaker Catalog</title>
+    <title>iSneakers ZW - Premium Sneaker Catalog</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* SNEAKER PAGE SPECIFIC STYLES - COLORFUL & MODERN */
+        
+        /* Import fun fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        /* Page Header - Graffiti Style */
+        .sneaker-header {
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .sneaker-header::before {
+            content: '👟👟👟';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .sneaker-header::after {
+            content: 'SNEAKERHEAD • ZIMBABWE • SNEAKERHEAD';
+            position: absolute;
+            bottom: 10px;
+            right: -50px;
+            font-size: 80px;
+            opacity: 0.1;
+            font-weight: 800;
+            white-space: nowrap;
+            color: black;
+            transform: rotate(-5deg);
+            font-family: 'Archivo Black', sans-serif;
+        }
+        
+        .sneaker-header h1 {
+            font-size: 80px;
+            margin-bottom: 15px;
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+            letter-spacing: 5px;
+            position: relative;
+            z-index: 2;
+            animation: titlePop 1s ease-out;
+        }
+        
+        @keyframes titlePop {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .sneaker-header p {
+            font-size: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            background: rgba(0,0,0,0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            display: inline-block;
+        }
+        
+        /* Category Filter - Neon Style */
+        .sneaker-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        .filter-btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255,107,107,0.5);
+        }
+        
+        /* Category Headers - Street Art Style */
+        .category-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        
+        .category-title {
+            font-size: 56px;
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 0 40px;
+            position: relative;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            letter-spacing: 3px;
+        }
+        
+        .category-title::before,
+        .category-title::after {
+            content: '👟';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            opacity: 0.5;
+        }
+        
+        .category-title::before {
+            left: -20px;
+        }
+        
+        .category-title::after {
+            right: -20px;
+        }
+        
+        .category-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* Sneaker Grid - Modern & Dynamic */
+        .sneaker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Sneaker Card - 3D & Eye-catching */
+        .sneaker-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            border: 3px solid transparent;
+            animation: cardFadeIn 0.5s ease-out;
+        }
+        
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .sneaker-card:nth-child(1) { animation-delay: 0.1s; }
+        .sneaker-card:nth-child(2) { animation-delay: 0.2s; }
+        .sneaker-card:nth-child(3) { animation-delay: 0.3s; }
+        .sneaker-card:nth-child(4) { animation-delay: 0.4s; }
+        .sneaker-card:nth-child(5) { animation-delay: 0.5s; }
+        .sneaker-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .sneaker-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 45px rgba(255,107,107,0.3);
+            border-color: #FF6B6B;
+        }
+        
+        /* Card Image Container - Dynamic Background */
+        .sneaker-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+            background: linear-gradient(135deg, #FF6B6B20, #4ECDC420, #45B7D120);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sneaker-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+        
+        .sneaker-card:hover .sneaker-image {
+            transform: scale(1.15) rotate(5deg);
+        }
+        
+        /* Floating Badges */
+        .sneaker-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: badgePulse 2s infinite;
+        }
+        
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .badge-exclusive { 
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+        }
+        
+        .badge-limited { 
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+        }
+        
+        .badge-popular { 
+            background: linear-gradient(135deg, #4ECDC4, #45B7D1);
+            color: white;
+        }
+        
+        .badge-new { 
+            background: linear-gradient(135deg, #96CEB4, #FFEAA7);
+            color: black;
+        }
+        
+        .badge-rare { 
+            background: linear-gradient(135deg, #9B59B6, #8E44AD);
+            color: white;
+        }
+        
+        /* Card Info Section */
+        .sneaker-info {
+            padding: 25px;
+            background: white;
+            position: relative;
+        }
+        
+        .sneaker-brand {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #FF6B6B;
+            margin-bottom: 8px;
+            font-weight: 700;
+            display: inline-block;
+            padding: 3px 10px;
+            background: #FF6B6B20;
+            border-radius: 20px;
+        }
+        
+        .sneaker-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: #333;
+            line-height: 1.2;
+            font-family: 'Archivo Black', sans-serif;
+        }
+        
+        .sneaker-colors {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .colorway {
+            font-size: 13px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .colorway.red { background: #FF6B6B; color: white; }
+        .colorway.blue { background: #4ECDC4; color: white; }
+        .colorway.green { background: #96CEB4; color: white; }
+        .colorway.yellow { background: #FFEAA7; color: black; }
+        .colorway.black { background: #333; color: white; }
+        .colorway.white { background: #f5f5f5; color: #333; border: 1px solid #ddd; }
+        .colorway.purple { background: #9B59B6; color: white; }
+        .colorway.orange { background: #FF8E53; color: white; }
+        
+        /* Features Tags */
+        .sneaker-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .feature-tag {
+            background: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s;
+        }
+        
+        .sneaker-card:hover .feature-tag {
+            background: linear-gradient(135deg, #FF6B6B20, #4ECDC420);
+        }
+        
+        /* Release Info */
+        .release-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed #f0f0f0;
+        }
+        
+        .release-year {
+            font-size: 14px;
+            font-weight: 700;
+            color: #FF6B6B;
+        }
+        
+        .inquiry-btn {
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .inquiry-btn:hover {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            transform: translateX(5px);
+        }
+        
+        /* Cool Corner Accent */
+        .sneaker-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-bottom: 20px solid #FF6B6B;
+            border-left: 20px solid transparent;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sneaker-card:hover::after {
+            opacity: 1;
+        }
+        
+        /* Brand Stripes */
+        .brand-stripe {
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7);
+            width: 100%;
+        }
+        
+        /* Limited Edition Banner */
+        .limited-banner {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: rotate(-2deg);
+            margin: 5px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sneaker-header h1 {
+                font-size: 48px;
+            }
+            
+            .sneaker-header p {
+                font-size: 18px;
+            }
+            
+            .category-title {
+                font-size: 36px;
+            }
+            
+            .sneaker-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .sneaker-name {
+                font-size: 20px;
+            }
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-15deg); }
+            50% { transform: translateY(-20px) rotate(-15deg); }
+        }
+        
+        /* Sneaker of the Day Section */
+        .sotd-section {
+            background: linear-gradient(135deg, #FF6B6B10, #4ECDC410);
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 50px;
+        }
+        
+        /* Size Chart Button */
+        .size-chart-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: #FF6B6B;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 2px solid #FF6B6B;
+            padding-bottom: 2px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center my-4">Sneaker Catalog</h1>
-        <div class="row">
-            <!-- Sneaker Item Example -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="path_to_sneaker_image_1.jpg" class="card-img-top" alt="Sneaker 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Sneaker 1</h5>
-                        <p class="card-text">Description of sneaker 1.</p>
-                        <p class="card-text"><strong>$100.00</strong></p>
-                        <a href="#" class="btn btn-primary">Buy Now</a>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>🇿🇼 iSneakers ZW</h1>
+                    <p class="tagline">
+                        <span class="step-part">Step in Style</span> 
+                        <span class="dot">•</span> 
+                        <span class="tech-part">Talk in Tech</span>
+                    </p>
+                </a>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="iphones.html">iPhones</a></li>
+                    <li><a href="sneakers.html" class="active">Sneakers</a></li>
+                    <li><a href="promotions.html">Promotions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon">
+                🛒 <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SNEAKER HEADER - GRAFFITI STYLE -->
+        <div class="sneaker-header">
+            <h1>SNEAKERHEAD PARADISE</h1>
+            <p>🇿🇼 Zimbabwe's Freshest Kicks • 100% Authentic • No Fakes</p>
+            <div style="margin-top: 20px;">
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; margin: 0 5px;">SB Dunk</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; margin: 0 5px;">F1</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; margin: 0 5px;">J4</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; margin: 0 5px;">J5</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; margin: 0 5px;">TN</span>
+            </div>
+        </div>
+
+        <!-- FILTER BUTTONS -->
+        <div class="sneaker-filter">
+            <button class="filter-btn active" onclick="filterSneakers('all')">ALL KICKS</button>
+            <button class="filter-btn" onclick="filterSneakers('sb-dunk')">SB DUNK</button>
+            <button class="filter-btn" onclick="filterSneakers('f1')">F1</button>
+            <button class="filter-btn" onclick="filterSneakers('j4')">JORDAN 4</button>
+            <button class="filter-btn" onclick="filterSneakers('j5')">JORDAN 5</button>
+            <button class="filter-btn" onclick="filterSneakers('tn')">TN</button>
+        </div>
+
+        <!-- SB DUNK SECTION -->
+        <div class="category-header">
+            <h2 class="category-title">SB DUNK</h2>
+            <div class="category-subtitle">Skateboarding • Culture • Iconic</div>
+        </div>
+        
+        <div class="sneaker-grid" id="sb-dunk-section">
+            <!-- SB Dunk Low - Travis Scott -->
+            <div class="sneaker-card" data-category="sb-dunk">
+                <div class="sneaker-image-container">
+                    <img src="images/sb-dunk-travis.jpg" alt="SB Dunk Low Travis Scott" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF6B6B/white?text=SB+Dunk+Travis+Scott'">
+                    <div class="sneaker-badge badge-exclusive">EXCLUSIVE</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE SB</span>
+                    <h3 class="sneaker-name">SB Dunk Low <br>Travis Scott</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway brown">Brown</span>
+                        <span class="colorway black">Black</span>
+                        <span class="colorway white">Sail</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Paisley</span>
+                        <span class="feature-tag">Cactus Jack</span>
+                        <span class="feature-tag">Skate</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023</span>
+                        <button class="inquiry-btn">INQUIRE</button>
                     </div>
                 </div>
             </div>
-            <!-- Add more sneaker items below as needed -->
+
+            <!-- SB Dunk Low - Supreme -->
+            <div class="sneaker-card" data-category="sb-dunk">
+                <div class="sneaker-image-container">
+                    <img src="images/sb-dunk-supreme.jpg" alt="SB Dunk Low Supreme" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/4ECDC4/white?text=SB+Dunk+Supreme'">
+                    <div class="sneaker-badge badge-limited">LIMITED</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE SB</span>
+                    <h3 class="sneaker-name">SB Dunk Low <br>Supreme Stars</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway black">Black</span>
+                        <span class="colorway white">White</span>
+                        <span class="colorway red">Red</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Stars Print</span>
+                        <span class="feature-tag">Supreme</span>
+                        <span class="feature-tag">Collab</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2022</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SB Dunk Low - Chunky Dunky -->
+            <div class="sneaker-card" data-category="sb-dunk">
+                <div class="sneaker-image-container">
+                    <img src="images/sb-dunk-chunky.jpg" alt="SB Dunk Low Chunky Dunky" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/45B7D1/white?text=Chunky+Dunky'">
+                    <div class="sneaker-badge badge-popular">POPULAR</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE SB</span>
+                    <h3 class="sneaker-name">SB Dunk Low <br>Chunky Dunky</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway blue">Blue</span>
+                        <span class="colorway green">Green</span>
+                        <span class="colorway yellow">Yellow</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Cow Print</span>
+                        <span class="feature-tag">Ben & Jerry's</span>
+                        <span class="feature-tag">Limited</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2020</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SB Dunk Low - Grateful Dead -->
+            <div class="sneaker-card" data-category="sb-dunk">
+                <div class="sneaker-image-container">
+                    <img src="images/sb-dunk-dead.jpg" alt="SB Dunk Low Grateful Dead" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/96CEB4/white?text=Grateful+Dead'">
+                    <div class="sneaker-badge badge-rare">RARE</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE SB</span>
+                    <h3 class="sneaker-name">SB Dunk Low <br>Grateful Dead</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway green">Green</span>
+                        <span class="colorway yellow">Yellow</span>
+                        <span class="colorway orange">Orange</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Furry</span>
+                        <span class="feature-tag">Bear Logo</span>
+                        <span class="feature-tag">Collab</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2020</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SB Dunk Low - What The Paul -->
+            <div class="sneaker-card" data-category="sb-dunk">
+                <div class="sneaker-image-container">
+                    <img src="images/sb-dunk-wtp.jpg" alt="SB Dunk Low What The Paul" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FFEAA7/black?text=What+The+Paul'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE SB</span>
+                    <h3 class="sneaker-name">SB Dunk Low <br>What The Paul</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway multi">Multi-Color</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">What The</span>
+                        <span class="feature-tag">Paul Rodriguez</span>
+                        <span class="feature-tag">Graffiti</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2021</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SB Dunk Low - Parra -->
+            <div class="sneaker-card" data-category="sb-dunk">
+                <div class="sneaker-image-container">
+                    <img src="images/sb-dunk-parra.jpg" alt="SB Dunk Low Parra" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF6B6B/white?text=Parra+SB'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE SB</span>
+                    <h3 class="sneaker-name">SB Dunk Low <br>Parra</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway blue">Blue</span>
+                        <span class="colorway red">Red</span>
+                        <span class="colorway white">White</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Abstract Art</span>
+                        <span class="feature-tag">Artist Series</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2021</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- F1 (Formula 1) SECTION -->
+        <div class="category-header">
+            <h2 class="category-title">F1 COLLECTION</h2>
+            <div class="category-subtitle">Speed • Racing • Motorsport</div>
+        </div>
+        
+        <div class="sneaker-grid" id="f1-section">
+            <!-- F1 Racing Shoes -->
+            <div class="sneaker-card" data-category="f1">
+                <div class="sneaker-image-container">
+                    <img src="images/f1-mercedes.jpg" alt="F1 Mercedes AMG" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/4ECDC4/white?text=F1+Mercedes'">
+                    <div class="sneaker-badge badge-popular">RACING</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">PUMA</span>
+                    <h3 class="sneaker-name">Mercedes-AMG <br>F1 Racing Shoes</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway black">Black</span>
+                        <span class="colorway white">White</span>
+                        <span class="colorway teal">Teal</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Lewis Hamilton</span>
+                        <span class="feature-tag">Fireproof</span>
+                        <span class="feature-tag">Official</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2024</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- F1 Ferrari Collection -->
+            <div class="sneaker-card" data-category="f1">
+                <div class="sneaker-image-container">
+                    <img src="images/f1-ferrari.jpg" alt="F1 Ferrari" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF6B6B/white?text=F1+Ferrari'">
+                    <div class="sneaker-badge badge-exclusive">SCUDERIA</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">PUMA</span>
+                    <h3 class="sneaker-name">Scuderia Ferrari <br>F1 Racing Shoes</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway red">Red</span>
+                        <span class="colorway black">Black</span>
+                        <span class="colorway yellow">Yellow</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Charles Leclerc</span>
+                        <span class="feature-tag">Carbon Fiber</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2024</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- F1 Red Bull Racing -->
+            <div class="sneaker-card" data-category="f1">
+                <div class="sneaker-image-container">
+                    <img src="images/f1-redbull.jpg" alt="F1 Red Bull Racing" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/45B7D1/white?text=F1+Red+Bull'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">PUMA</span>
+                    <h3 class="sneaker-name">Red Bull Racing <br>F1 Team Shoes</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway blue">Navy</span>
+                        <span class="colorway red">Red</span>
+                        <span class="colorway yellow">Yellow</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Max Verstappen</span>
+                        <span class="feature-tag">Champions</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- F1 McLaren -->
+            <div class="sneaker-card" data-category="f1">
+                <div class="sneaker-image-container">
+                    <img src="images/f1-mclaren.jpg" alt="F1 McLaren" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF8E53/white?text=F1+McLaren'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">PUMA</span>
+                    <h3 class="sneaker-name">McLaren Racing <br>F1 Collection</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway orange">Papaya</span>
+                        <span class="colorway blue">Blue</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Lando Norris</span>
+                        <span class="feature-tag">Speed</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2024</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JORDAN 4 SECTION -->
+        <div class="category-header">
+            <h2 class="category-title">JORDAN 4</h2>
+            <div class="category-subtitle">Iconic • Legendary • Timeless</div>
+        </div>
+        
+        <div class="sneaker-grid" id="j4-section">
+            <!-- Jordan 4 Retro Bred -->
+            <div class="sneaker-card" data-category="j4">
+                <div class="sneaker-image-container">
+                    <img src="images/j4-bred.jpg" alt="Jordan 4 Bred" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF6B6B/white?text=Jordan+4+Bred'">
+                    <div class="sneaker-badge badge-limited">OG</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 4 Retro <br>Bred</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway black">Black</span>
+                        <span class="colorway red">Red</span>
+                        <span class="colorway white">White</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">1989</span>
+                        <span class="feature-tag">OG</span>
+                        <span class="feature-tag">Classic</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2019 Retro</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 4 Retro Off-White -->
+            <div class="sneaker-card" data-category="j4">
+                <div class="sneaker-image-container">
+                    <img src="images/j4-offwhite.jpg" alt="Jordan 4 Off-White" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/4ECDC4/white?text=Jordan+4+Off-White'">
+                    <div class="sneaker-badge badge-exclusive">OFF-WHITE</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 4 Retro <br>Off-White Sail</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway white">Sail</span>
+                        <span class="colorway black">Black</span>
+                        <span class="colorway beige">Beige</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Virgil Abloh</span>
+                        <span class="feature-tag">The Ten</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2020</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 4 Retro University Blue -->
+            <div class="sneaker-card" data-category="j4">
+                <div class="sneaker-image-container">
+                    <img src="images/j4-university.jpg" alt="Jordan 4 University Blue" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/45B7D1/white?text=Jordan+4+Uni+Blue'">
+                    <div class="sneaker-badge badge-popular">HOT</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 4 Retro <br>University Blue</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway blue">Blue</span>
+                        <span class="colorway white">White</span>
+                        <span class="colorway gray">Grey</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">UNC</span>
+                        <span class="feature-tag">Suede</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2021</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 4 Retro Pure Money -->
+            <div class="sneaker-card" data-category="j4">
+                <div class="sneaker-image-container">
+                    <img src="images/j4-puremoney.jpg" alt="Jordan 4 Pure Money" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/96CEB4/white?text=Jordan+4+Pure+Money'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 4 Retro <br>Pure Money</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway white">White</span>
+                        <span class="colorway silver">Silver</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Clean</span>
+                        <span class="feature-tag">White on White</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2017</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 4 Retro Lightning -->
+            <div class="sneaker-card" data-category="j4">
+                <div class="sneaker-image-container">
+                    <img src="images/j4-lightning.jpg" alt="Jordan 4 Lightning" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FFEAA7/black?text=Jordan+4+Lightning'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 4 Retro <br>Lightning</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway yellow">Tour Yellow</span>
+                        <span class="colorway black">Black</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Electric</span>
+                        <span class="feature-tag">Bold</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2021</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 4 Retro Black Cat -->
+            <div class="sneaker-card" data-category="j4">
+                <div class="sneaker-image-container">
+                    <img src="images/j4-blackcat.jpg" alt="Jordan 4 Black Cat" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/333333/white?text=Jordan+4+Black+Cat'">
+                    <div class="sneaker-badge badge-rare">RARE</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 4 Retro <br>Black Cat</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway black">All Black</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Stealth</span>
+                        <span class="feature-tag">Sleek</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2020</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JORDAN 5 SECTION -->
+        <div class="category-header">
+            <h2 class="category-title">JORDAN 5</h2>
+            <div class="category-subtitle">Flight • Fighter Jet • Fresh</div>
+        </div>
+        
+        <div class="sneaker-grid" id="j5-section">
+            <!-- Jordan 5 Retro Fire Red -->
+            <div class="sneaker-card" data-category="j5">
+                <div class="sneaker-image-container">
+                    <img src="images/j5-firered.jpg" alt="Jordan 5 Fire Red" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF6B6B/white?text=Jordan+5+Fire+Red'">
+                    <div class="sneaker-badge badge-limited">OG</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 5 Retro <br>Fire Red</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway white">White</span>
+                        <span class="colorway red">Fire Red</span>
+                        <span class="colorway black">Black</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">1990</span>
+                        <span class="feature-tag">Nike Air</span>
+                        <span class="feature-tag">3M Tongue</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2020 Retro</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 5 Retro Off-White -->
+            <div class="sneaker-card" data-category="j5">
+                <div class="sneaker-image-container">
+                    <img src="images/j5-offwhite.jpg" alt="Jordan 5 Off-White" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/4ECDC4/white?text=Jordan+5+Off-White'">
+                    <div class="sneaker-badge badge-exclusive">OFF-WHITE</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 5 Retro <br>Off-White Muslin</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway beige">Muslin</span>
+                        <span class="colorway black">Black</span>
+                        <span class="colorway red">Red</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Virgil</span>
+                        <span class="feature-tag">See-through</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2020</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 5 Retro Grape -->
+            <div class="sneaker-card" data-category="j5">
+                <div class="sneaker-image-container">
+                    <img src="images/j5-grape.jpg" alt="Jordan 5 Grape" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/9B59B6/white?text=Jordan+5+Grape'">
+                    <div class="sneaker-badge badge-popular">CLASSIC</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 5 Retro <br>Grape</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway purple">Grape</span>
+                        <span class="colorway teal">Teal</span>
+                        <span class="colorway white">White</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Fresh</span>
+                        <span class="feature-tag">Colorful</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2013</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 5 Retro Bel-Air -->
+            <div class="sneaker-card" data-category="j5">
+                <div class="sneaker-image-container">
+                    <img src="images/j5-belair.jpg" alt="Jordan 5 Bel-Air" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF8E53/white?text=Jordan+5+Bel-Air'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 5 Retro <br>Bel-Air</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway pink">Pink</span>
+                        <span class="colorway green">Green</span>
+                        <span class="colorway purple">Purple</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Fresh Prince</span>
+                        <span class="feature-tag">Wild</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2013</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 5 Retro Raging Bull -->
+            <div class="sneaker-card" data-category="j5">
+                <div class="sneaker-image-container">
+                    <img src="images/j5-ragingbull.jpg" alt="Jordan 5 Raging Bull" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF0000/white?text=Jordan+5+Raging+Bull'">
+                    <div class="sneaker-badge badge-limited">SUEDE</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 5 Retro <br>Raging Bull</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway red">Red Suede</span>
+                        <span class="colorway black">Black</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Suede</span>
+                        <span class="feature-tag">Torch</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2021</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jordan 5 Retro What The -->
+            <div class="sneaker-card" data-category="j5">
+                <div class="sneaker-image-container">
+                    <img src="images/j5-whatthe.jpg" alt="Jordan 5 What The" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FFEAA7/black?text=Jordan+5+What+The'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">AIR JORDAN</span>
+                    <h3 class="sneaker-name">Jordan 5 Retro <br>What The</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway multi">Multi-Color</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Mixed</span>
+                        <span class="feature-tag">Unique</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TN (Air Max Plus) SECTION -->
+        <div class="category-header">
+            <h2 class="category-title">TN • AIR MAX PLUS</h2>
+            <div class="category-subtitle">Heat • Gradient • Iconic</div>
+        </div>
+        
+        <div class="sneaker-grid" id="tn-section">
+            <!-- TN OG Hyper Blue -->
+            <div class="sneaker-card" data-category="tn">
+                <div class="sneaker-image-container">
+                    <img src="images/tn-hyperblue.jpg" alt="TN Hyper Blue" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/45B7D1/white?text=TN+Hyper+Blue'">
+                    <div class="sneaker-badge badge-limited">OG</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE</span>
+                    <h3 class="sneaker-name">Air Max Plus <br>OG Hyper Blue</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway blue">Hyper Blue</span>
+                        <span class="colorway orange">Sunset</span>
+                        <span class="colorway white">White</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">1998</span>
+                        <span class="feature-tag">Tuned Air</span>
+                        <span class="feature-tag">Gradient</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023 Retro</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN Volt -->
+            <div class="sneaker-card" data-category="tn">
+                <div class="sneaker-image-container">
+                    <img src="images/tn-volt.jpg" alt="TN Volt" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/9ACD32/white?text=TN+Volt'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE</span>
+                    <h3 class="sneaker-name">Air Max Plus <br>Volt</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway green">Volt</span>
+                        <span class="colorway black">Black</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Bright</span>
+                        <span class="feature-tag">Eye-catching</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2022</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN Sunset -->
+            <div class="sneaker-card" data-category="tn">
+                <div class="sneaker-image-container">
+                    <img src="images/tn-sunset.jpg" alt="TN Sunset" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF8E53/white?text=TN+Sunset'">
+                    <div class="sneaker-badge badge-popular">CLASSIC</div>
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE</span>
+                    <h3 class="sneaker-name">Air Max Plus <br>Sunset</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway orange">Orange</span>
+                        <span class="colorway yellow">Yellow</span>
+                        <span class="colorway pink">Pink</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Gradient</span>
+                        <span class="feature-tag">Summer</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN Triple Black -->
+            <div class="sneaker-card" data-category="tn">
+                <div class="sneaker-image-container">
+                    <img src="images/tn-black.jpg" alt="TN Triple Black" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/333333/white?text=TN+Triple+Black'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE</span>
+                    <h3 class="sneaker-name">Air Max Plus <br>Triple Black</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway black">All Black</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Stealth</span>
+                        <span class="feature-tag">Sleek</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN Pink Gradient -->
+            <div class="sneaker-card" data-category="tn">
+                <div class="sneaker-image-container">
+                    <img src="images/tn-pink.jpg" alt="TN Pink Gradient" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/FF69B4/white?text=TN+Pink'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE</span>
+                    <h3 class="sneaker-name">Air Max Plus <br>Pink Gradient</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway pink">Pink</span>
+                        <span class="colorway purple">Purple</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Women's</span>
+                        <span class="feature-tag">Fresh</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2024</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TN Blue Coral -->
+            <div class="sneaker-card" data-category="tn">
+                <div class="sneaker-image-container">
+                    <img src="images/tn-coral.jpg" alt="TN Blue Coral" class="sneaker-image" onerror="this.src='https://placehold.co/600x400/4ECDC4/white?text=TN+Blue+Coral'">
+                </div>
+                <div class="sneaker-info">
+                    <span class="sneaker-brand">NIKE</span>
+                    <h3 class="sneaker-name">Air Max Plus <br>Blue Coral</h3>
+                    <div class="sneaker-colors">
+                        <span class="colorway blue">Blue</span>
+                        <span class="colorway coral">Coral</span>
+                    </div>
+                    <div class="sneaker-features">
+                        <span class="feature-tag">Beach</span>
+                        <span class="feature-tag">Summer</span>
+                    </div>
+                    <div class="release-info">
+                        <span class="release-year">2023</span>
+                        <button class="inquiry-btn">INQUIRE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SNEAKER CULTURE BANNER -->
+        <div class="sotd-section">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <span style="font-size: 60px; display: block; margin-bottom: 20px;">👟🔥</span>
+                <h2 style="font-size: 48px; margin-bottom: 20px; font-family: 'Archivo Black', sans-serif;">SNEAKERHEAD CULTURE</h2>
+                <p style="font-size: 18px; margin-bottom: 30px; color: #666;">Join the community. Get exclusive releases. 100% authentic guaranteed.</p>
+                <div style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="contact.html" style="padding: 15px 40px; background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: white; text-decoration: none; border-radius: 50px; font-weight: 800;">CONTACT US</a>
+                    <a href="https://wa.me/263771234567" style="padding: 15px 40px; background: #25D366; color: white; text-decoration: none; border-radius: 50px; font-weight: 800;">WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-decoration">
+            <div class="gold-line"></div>
+            <div class="zim-flag-strip"></div>
+        </div>
+        
+        <div class="footer-content">
+            <div class="footer-section company-info">
+                <h3>🇿🇼 iSneakers ZW</h3>
+                <p class="footer-tagline">Step in Style • Talk in Tech</p>
+                <p class="company-description">
+                    Zimbabwe's premier destination for authentic sneakers and the latest iPhones. 
+                    Premium quality, guaranteed authenticity, and nationwide delivery.
+                </p>
+                
+                <div class="trust-badges">
+                    <span class="badge">✅ 100% Authentic</span>
+                    <span class="badge">🇿🇼 Zimbabwe Owned</span>
+                    <span class="badge">🚚 Nationwide Delivery</span>
+                </div>
+                
+                <div class="social-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Facebook">📘</a>
+                        <a href="#" class="social-icon" title="Instagram">📷</a>
+                        <a href="#" class="social-icon" title="Twitter">🐦</a>
+                        <a href="#" class="social-icon" title="WhatsApp">📱</a>
+                        <a href="#" class="social-icon" title="TikTok">🎵</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="products.html">📦 All Products</a></li>
+                    <li><a href="iphones.html">📱 iPhones</a></li>
+                    <li><a href="sneakers.html">👟 Sneakers</a></li>
+                    <li><a href="promotions.html">🎉 Special Offers</a></li>
+                    <li><a href="contact.html">📞 Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact-section">
+                <h3>📞 Contact Us</h3>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-details">
+                        <strong>Call Us:</strong>
+                        <p><a href="tel:+263771234567">+263 77 123 4567</a> (Econet)</p>
+                        <p><a href="tel:+263712345678">+263 71 234 5678</a> (NetOne)</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <div class="contact-details">
+                        <strong>WhatsApp:</strong>
+                        <p><a href="https://wa.me/263771234567" target="_blank" class="whatsapp-link">+263 77 123 4567</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-details">
+                        <strong>Email:</strong>
+                        <p><a href="mailto:info@isneakers.co.zw">info@isneakers.co.zw</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div class="contact-details">
+                        <strong>Visit Us:</strong>
+                        <p>123 Sam Nujoma Street<br>Eastlea, Harare</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">🕒</span>
+                    <div class="contact-details">
+                        <strong>Hours:</strong>
+                        <p>Mon-Fri: 9AM-6PM<br>Sat: 9AM-3PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>📰 Newsletter</h3>
+                <p>Get updates on new arrivals & special offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+                
+                <div class="payment-methods">
+                    <h4>We Accept:</h4>
+                    <div class="payment-icons">
+                        <span class="payment-icon">💵 Cash</span>
+                        <span class="payment-icon">💳 EcoCash</span>
+                        <span class="payment-icon">💳 Visa</span>
+                        <span class="payment-icon">💳 Mastercard</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>&copy; 2025 iSneakers ZW. All Rights Reserved.</p>
+                <p class="zim-pride">🇿🇼 Proudly Zimbabwean • Authentic Products • Nationwide Delivery</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="terms.html">Terms</a>
+                    <span class="separator">|</span>
+                    <a href="shipping.html">Shipping</a>
+                    <span class="separator">|</span>
+                    <a href="returns.html">Returns</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterSneakers(category) {
+            // Update active button
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Get all sneaker cards
+            const allCards = document.querySelectorAll('.sneaker-card');
+            
+            if (category === 'all') {
+                allCards.forEach(card => {
+                    card.style.display = 'block';
+                    card.style.animation = 'cardFadeIn 0.5s ease-out';
+                });
+            } else {
+                allCards.forEach(card => {
+                    if (card.dataset.category === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'cardFadeIn 0.5s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        }
+        
+        // Add inquiry button functionality
+        document.querySelectorAll('.inquiry-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const sneaker = this.closest('.sneaker-card').querySelector('.sneaker-name').textContent.trim();
+                const message = `Hello! I'm interested in the ${sneaker}. Could you please provide the current price and available sizes?`;
+                window.open(`https://wa.me/263771234567?text=${encodeURIComponent(message)}`, '_blank');
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.sneaker-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
